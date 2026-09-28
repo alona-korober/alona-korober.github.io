@@ -350,22 +350,23 @@
     }
 
     /* Contact links */
-    .hero-contact { display: flex; gap: 20px; flex-wrap: wrap; }
+    .hero-contact { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
     .hero-contact a {
-      font-family: 'Space Grotesk', sans-serif; font-size: 13px;
+      font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500;
       color: var(--text-2); text-decoration: none;
-      display: flex; align-items: center; gap: 7px;
+      display: flex; align-items: center; gap: 8px;
       border: 1px solid var(--border); border-radius: 100px;
-      padding: 7px 16px; transition: all .2s;
+      padding: 10px 20px; transition: all .2s;
     }
-    .hero-contact a:hover { border-color: var(--border-g); color: var(--gold); }
-    .hero-contact a svg { width: 13px; height: 13px; opacity: .7; }
+    .hero-contact a:hover { border-color: var(--border-g); color: var(--text); }
+    .hero-contact a svg { width: 14px; height: 14px; flex-shrink: 0; }
     .hero-contact a.resume-btn {
-      background: var(--gold-bg);
-      border-color: var(--border-g);
-      color: var(--gold);
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--bg);
+      font-weight: 600;
     }
-    .hero-contact a.resume-btn:hover { background: var(--gold-dim); }
+    .hero-contact a.resume-btn:hover { opacity: .88; color: var(--bg); }
 
     /* Scroll cue */
     .scroll-cue {
@@ -792,30 +793,7 @@
         <span class="dot"></span> 12+ years scaling organizations &amp; building human-first cultures
       </p>
 
-      <div class="stats reveal" data-delay="3" id="stats">
-        <div class="stat-box">
-          <div class="stat-num" data-count="370">0</div>
-          <div class="stat-lbl">Employees Scaled</div>
-          <div class="stat-sub">from 50</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num" data-static="10×">10×</div>
-          <div class="stat-lbl">Profitability Growth</div>
-          <div class="stat-sub">over tenure</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num" data-static="10×">10×</div>
-          <div class="stat-lbl">Lead Conversion</div>
-          <div class="stat-sub">improvement</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-num" data-static="3–4×">3–4×</div>
-          <div class="stat-lbl">Customer LTV</div>
-          <div class="stat-sub">growth</div>
-        </div>
-      </div>
-
-      <div class="hero-contact reveal" data-delay="4">
+      <div class="hero-contact reveal" data-delay="3">
         <a href="mailto:Alona.korober@gmail.com">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           Alona.korober@gmail.com
@@ -846,47 +824,39 @@
     <div class="impact-grid">
 
       <div class="impact-card reveal" data-delay="1">
-        <div class="impact-num" data-count="48" data-prefix="+" data-suffix="%">0</div>
-        <div class="impact-lbl">Headcount Growth During COVID</div>
-        <div class="impact-ctx">100% in-office operations maintained throughout lockdown</div>
-      </div>
-
-      <div class="impact-card reveal" data-delay="2">
-        <div class="impact-num" data-static="4×">4×</div>
-        <div class="impact-lbl">Higher 1-Year Employee Retention</div>
-        <div class="impact-ctx">Through structured peer-based training programs</div>
-      </div>
-
-      <div class="impact-card reveal" data-delay="3">
-        <div class="impact-num" data-count="97" data-suffix="%">0</div>
-        <div class="impact-lbl">Reduction in Lead Losses</div>
-        <div class="impact-ctx">Via a comprehensive security &amp; compliance program</div>
-      </div>
-
-      <div class="impact-card reveal" data-delay="4">
-        <div class="impact-num" data-static="2–4×">2–4×</div>
-        <div class="impact-lbl">Higher Sales Efficiency Per Lead</div>
-        <div class="impact-ctx">Driven by process optimisation &amp; systematic coaching</div>
-      </div>
-
-      <div class="impact-card reveal" data-delay="5">
-        <div class="impact-num" data-count="12" data-suffix="×">0</div>
-        <div class="impact-lbl">Payroll Processing Efficiency</div>
-        <div class="impact-ctx">Through end-to-end process optimisation</div>
-      </div>
-
-      <div class="impact-card reveal" data-delay="6">
         <div class="impact-num" data-count="7" data-suffix="×">0</div>
         <div class="impact-lbl">Headcount Growth</div>
         <div class="impact-ctx">Built HR from the ground up — from 50 to 370 employees</div>
       </div>
 
-      <div class="impact-card impact-card--wide reveal" data-delay="7">
+      <div class="impact-card reveal" data-delay="2">
+        <div class="impact-num" data-static="10×">10×</div>
+        <div class="impact-lbl">Profitability Growth</div>
+        <div class="impact-ctx">Over full tenure through operational excellence</div>
+      </div>
+
+      <div class="impact-card reveal" data-delay="3">
         <div class="impact-num" data-static="~95%">~95%</div>
-        <div>
-          <div class="impact-lbl">Internal Manager Retention</div>
-          <div class="impact-ctx">Built a promote-from-within model and career paths for high performers; filled virtually all management roles internally, retained ~95% of internally developed managers, and reduced first-year management turnover to near zero — versus external hires typically leaving within 12 months.</div>
-        </div>
+        <div class="impact-lbl">Internal Manager Retention</div>
+        <div class="impact-ctx">Promote-from-within model; near-zero first-year management turnover</div>
+      </div>
+
+      <div class="impact-card reveal" data-delay="4">
+        <div class="impact-num" data-count="97" data-suffix="%">0</div>
+        <div class="impact-lbl">Reduction in Lead Losses</div>
+        <div class="impact-ctx">Via a comprehensive security &amp; compliance program</div>
+      </div>
+
+      <div class="impact-card reveal" data-delay="5">
+        <div class="impact-num" data-static="4×">4×</div>
+        <div class="impact-lbl">Higher 1-Year Employee Retention</div>
+        <div class="impact-ctx">Through structured training &amp; peer-based onboarding</div>
+      </div>
+
+      <div class="impact-card reveal" data-delay="6">
+        <div class="impact-num" data-count="48" data-prefix="+" data-suffix="%">0</div>
+        <div class="impact-lbl">Headcount Growth During COVID</div>
+        <div class="impact-ctx">100% in-office operations maintained throughout lockdown</div>
       </div>
 
     </div>
