@@ -310,33 +310,33 @@
     .impact-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: var(--r);
-      overflow: hidden;
-      margin-top: 52px;
+      gap: 0;
+      background: none;
+      border: none;
+      border-radius: 0;
+      overflow: visible;
+      margin-top: 64px;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
     }
     .impact-card {
-      background: var(--bg-2);
-      padding: 36px 32px;
+      background: none;
+      padding: 40px 36px 36px;
       display: flex; flex-direction: column; gap: 10px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
       transition: background .2s;
+      /* starts hidden — animated in by individual JS observer */
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease, background .2s;
     }
-    .impact-card:hover { background: var(--bg-3); }
-    /* Wide card spanning full grid width */
-    .impact-card--wide {
-      grid-column: 1 / -1;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 36px;
-    }
-    .impact-card--wide .impact-num { flex-shrink: 0; }
+    .impact-card.in { opacity: 1; transform: none; }
+    .impact-card:hover { background: var(--gold-bg); }
     .impact-num {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(44px, 5vw, 64px);
+      font-size: clamp(52px, 6.5vw, 88px);
       font-weight: 700; color: var(--gold);
-      line-height: 1; letter-spacing: -0.02em;
+      line-height: 1; letter-spacing: -0.03em;
     }
     .impact-lbl {
       font-family: 'Space Grotesk', sans-serif;
@@ -345,9 +345,9 @@
     }
     .impact-ctx {
       font-size: 12px; color: var(--text-2); line-height: 1.55;
-      border-top: 1px solid var(--border);
-      padding-top: 10px; margin-top: 2px;
     }
+    /* Wide card spanning full width — no longer needed */
+    .impact-card--wide { grid-column: unset; flex-direction: column; gap: 10px; }
 
     /* Contact links */
     .hero-contact { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
@@ -649,8 +649,7 @@
     @media (max-width: 820px) {
       .stats { grid-template-columns: repeat(2,1fr); max-width: 100%; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
-      .impact-card--wide { flex-direction: column; gap: 10px; }
-      .cred-wrap { grid-template-columns: 1fr; gap: 52px; }
+      .impact-card--wide { flex-direction: column; gap: 10px; }      .cred-wrap { grid-template-columns: 1fr; gap: 52px; }
       .ref-grid { grid-template-columns: 1fr; }
       .vol-grid { grid-template-columns: 1fr; }
       /* On tablet: keep photo at 52% so S-curve stays at the photo edge */
@@ -661,7 +660,6 @@
       .w { padding: 0 20px; }
       .nav-links { display: none; }
       .impact-grid { grid-template-columns: 1fr; }
-      .impact-card--wide { flex-direction: column; gap: 10px; }
       .impact-card { padding: 28px 20px; }
       .impact-num { font-size: 48px; }
       section, #skills, #experience, #credentials,
@@ -825,37 +823,37 @@
     <h2 class="section-title reveal" data-delay="1">Impact by the Numbers</h2>
     <div class="impact-grid">
 
-      <div class="impact-card reveal" data-delay="1">
+      <div class="impact-card" data-delay="1">
         <div class="impact-num" data-count="7" data-suffix="×">0</div>
         <div class="impact-lbl">Headcount Growth</div>
         <div class="impact-ctx">Built HR from the ground up — from 50 to 370 employees</div>
       </div>
 
-      <div class="impact-card reveal" data-delay="2">
+      <div class="impact-card" data-delay="2">
         <div class="impact-num" data-static="10×">10×</div>
         <div class="impact-lbl">Profitability Growth</div>
         <div class="impact-ctx">Over full tenure through operational excellence</div>
       </div>
 
-      <div class="impact-card reveal" data-delay="3">
+      <div class="impact-card" data-delay="3">
         <div class="impact-num" data-static="~95%">~95%</div>
         <div class="impact-lbl">Internal Manager Retention</div>
         <div class="impact-ctx">Promote-from-within model; near-zero first-year management turnover</div>
       </div>
 
-      <div class="impact-card reveal" data-delay="4">
+      <div class="impact-card" data-delay="4">
         <div class="impact-num" data-count="97" data-suffix="%">0</div>
         <div class="impact-lbl">Reduction in Lead Losses</div>
         <div class="impact-ctx">Via a comprehensive security &amp; compliance program</div>
       </div>
 
-      <div class="impact-card reveal" data-delay="5">
+      <div class="impact-card" data-delay="5">
         <div class="impact-num" data-static="4×">4×</div>
         <div class="impact-lbl">Higher 1-Year Employee Retention</div>
         <div class="impact-ctx">Through structured training &amp; peer-based onboarding</div>
       </div>
 
-      <div class="impact-card reveal" data-delay="6">
+      <div class="impact-card" data-delay="6">
         <div class="impact-num" data-count="48" data-prefix="+" data-suffix="%">0</div>
         <div class="impact-lbl">Headcount Growth During COVID</div>
         <div class="impact-ctx">100% in-office operations maintained throughout lockdown</div>
@@ -1386,6 +1384,26 @@ const statsEl = document.getElementById('stats');
 if (statsEl) statsObs.observe(statsEl);
 const impactEl = document.getElementById('impact');
 if (impactEl) statsObs.observe(impactEl);
+
+/* ── Impact cards: observe each individually for one-at-a-time cascade ── */
+const cardDelays = [0, 0.12, 0.24, 0, 0.12, 0.24]; // row-based stagger
+const impactCardObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    const card = e.target;
+    const delay = parseFloat(card.dataset.delay || 0);
+    // stagger within each row (positions 1,2,3 → 4,5,6)
+    const rowDelay = cardDelays[(+card.dataset.delay - 1) % 3] || 0;
+    card.style.transitionDelay = rowDelay + 's';
+    card.classList.add('in');
+    // trigger count-up for this card
+    card.querySelectorAll('[data-count]').forEach(el => {
+      setTimeout(() => countUp(el, +el.dataset.count, el.dataset.prefix || '', el.dataset.suffix || '', 1400), rowDelay * 1000);
+    });
+    impactCardObs.unobserve(card);
+  });
+}, { threshold: 0.35, rootMargin: '0px 0px -60px 0px' });
+document.querySelectorAll('.impact-card').forEach(card => impactCardObs.observe(card));
 
 /* ── Language bars ────────────────────────────────────────────── */
 const langObs = new IntersectionObserver((entries) => {
