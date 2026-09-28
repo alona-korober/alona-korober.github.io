@@ -360,13 +360,20 @@
     }
     .hero-contact a:hover { border-color: var(--border-g); color: var(--text); }
     .hero-contact a svg { width: 14px; height: 14px; flex-shrink: 0; }
-    .hero-contact a.resume-btn {
+    /* Email = primary solid button */
+    .hero-contact a.email-btn {
       background: var(--gold);
       border-color: var(--gold);
       color: var(--bg);
       font-weight: 600;
     }
-    .hero-contact a.resume-btn:hover { opacity: .88; color: var(--bg); }
+    .hero-contact a.email-btn:hover { opacity: .88; color: var(--bg); }
+    /* Resume = secondary outlined button */
+    .hero-contact a.resume-btn {
+      border-color: var(--border-g);
+      color: var(--gold);
+    }
+    .hero-contact a.resume-btn:hover { background: var(--gold-bg); }
 
     /* Scroll cue */
     .scroll-cue {
@@ -794,7 +801,7 @@
       </p>
 
       <div class="hero-contact reveal" data-delay="3">
-        <a href="mailto:Alona.korober@gmail.com">
+        <a href="mailto:Alona.korober@gmail.com" class="email-btn">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
           Alona.korober@gmail.com
         </a>
