@@ -324,6 +324,14 @@
       transition: background .2s;
     }
     .impact-card:hover { background: var(--bg-3); }
+    /* Wide card spanning full grid width */
+    .impact-card--wide {
+      grid-column: 1 / -1;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 36px;
+    }
+    .impact-card--wide .impact-num { flex-shrink: 0; }
     .impact-num {
       font-family: 'Cormorant Garamond', serif;
       font-size: clamp(44px, 5vw, 64px);
@@ -627,6 +635,7 @@
     @media (max-width: 820px) {
       .stats { grid-template-columns: repeat(2,1fr); max-width: 100%; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
+      .impact-card--wide { flex-direction: column; gap: 10px; }
       .cred-wrap { grid-template-columns: 1fr; gap: 52px; }
       .ref-grid { grid-template-columns: 1fr; }
       .vol-grid { grid-template-columns: 1fr; }
@@ -638,6 +647,7 @@
       .w { padding: 0 20px; }
       .nav-links { display: none; }
       .impact-grid { grid-template-columns: 1fr; }
+      .impact-card--wide { flex-direction: column; gap: 10px; }
       .impact-card { padding: 28px 20px; }
       .impact-num { font-size: 48px; }
       section, #skills, #experience, #credentials,
@@ -774,7 +784,7 @@
 
       <div class="stats reveal" data-delay="3" id="stats">
         <div class="stat-box">
-          <div class="stat-num" data-count="350" data-suffix="+">0</div>
+          <div class="stat-num" data-count="370">0</div>
           <div class="stat-lbl">Employees Scaled</div>
           <div class="stat-sub">from 50</div>
         </div>
@@ -855,6 +865,14 @@
         <div class="impact-num" data-count="7" data-suffix="×">0</div>
         <div class="impact-lbl">Headcount Growth</div>
         <div class="impact-ctx">Built HR from the ground up — from 50 to 370 employees</div>
+      </div>
+
+      <div class="impact-card impact-card--wide reveal" data-delay="7">
+        <div class="impact-num" data-static="~95%">~95%</div>
+        <div>
+          <div class="impact-lbl">Internal Manager Retention</div>
+          <div class="impact-ctx">Built a promote-from-within model and career paths for high performers; filled virtually all management roles internally, retained ~95% of internally developed managers, and reduced first-year management turnover to near zero — versus external hires typically leaving within 12 months.</div>
+        </div>
       </div>
 
     </div>
@@ -961,28 +979,32 @@
             <div class="tl-rb">
               <div class="tl-achs">
                 <div class="tl-ach">
-                  <div class="tl-ach-title">COVID Workforce Growth</div>
-                  <div class="tl-ach-body">Developed an operational strategy to maintain 100% in-office operations during COVID, overcoming workforce transportation constraints and enabling continued hiring; grew headcount by 48%, from 250 to 370 employees.</div>
+                  <div class="tl-ach-title">HR Operations &amp; Organizational Scaling</div>
+                  <div class="tl-ach-body">Built and scaled HR operations from the ground up, establishing recruiting, onboarding, training, and employee development processes that supported 7× company growth, from 50 to 370 employees.</div>
+                </div>
+                <div class="tl-ach">
+                  <div class="tl-ach-title">Internal Talent &amp; Career Growth</div>
+                  <div class="tl-ach-body">Built a promote-from-within model and career paths for high-performing employees; filled virtually all management roles internally, retained ~95% of internally developed managers, and reduced first-year management turnover to near zero versus external hires typically leaving within 12 months.</div>
                 </div>
                 <div class="tl-ach">
                   <div class="tl-ach-title">Employee Training &amp; Retention</div>
                   <div class="tl-ach-body">Built a structured onboarding and sales training program combining role-specific training, coaching, and team placement; increased 1-year employee retention by 4× compared with direct external hires.</div>
                 </div>
                 <div class="tl-ach">
-                  <div class="tl-ach-title">Data &amp; Lead Security</div>
-                  <div class="tl-ach-body">Implemented a comprehensive security program across internal systems, CRM processes, and data access; reduced lead losses by 97%.</div>
+                  <div class="tl-ach-title">COVID Workforce Growth</div>
+                  <div class="tl-ach-body">Developed an operational strategy to maintain 100% in-office operations during COVID, overcoming workforce transportation constraints and enabling continued hiring; grew headcount by 48%, from 250 to 370 employees.</div>
                 </div>
                 <div class="tl-ach">
                   <div class="tl-ach-title">Sales Performance Development</div>
-                  <div class="tl-ach-body">Built an employee development system combining structured training, QA feedback, and manager coaching to continuously improve sales performance; increased sales efficiency per lead by 2–4×.</div>
+                  <div class="tl-ach-body">Built an employee development system combining structured training, QA feedback, and manager coaching to improve sales performance; increased sales efficiency per lead by 2–4×.</div>
                 </div>
                 <div class="tl-ach">
                   <div class="tl-ach-title">Payroll Process Optimization</div>
                   <div class="tl-ach-body">Redesigned and streamlined payroll operations as the organization scaled, reducing processing time while supporting significantly higher volume; increased payroll processing efficiency by 12×.</div>
                 </div>
                 <div class="tl-ach">
-                  <div class="tl-ach-title">HR Operations &amp; Organizational Scaling</div>
-                  <div class="tl-ach-body">Built and scaled HR operations from the ground up, establishing recruiting, onboarding, training, and employee development processes that supported 7× company growth, from 50 to 370 employees.</div>
+                  <div class="tl-ach-title">Data &amp; Lead Security</div>
+                  <div class="tl-ach-body">Implemented a comprehensive security program across internal systems, CRM processes, and data access; reduced lead losses by 97%.</div>
                 </div>
               </div>
             </div>
