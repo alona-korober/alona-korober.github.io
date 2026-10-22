@@ -613,6 +613,190 @@
     }
     .ref-note { font-size: 12.5px; color: var(--text-2); line-height: 1.72; font-style: italic; }
 
+    /* ── HERO TAGLINE ─────────────────────────────────────────────────── */
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(18px, 2.4vw, 26px);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.35;
+      margin: 0 0 10px;
+      max-width: 480px;
+    }
+
+    /* ── SELECTED IMPACT ──────────────────────────────────────────────── */
+    #selected-impact { padding: 100px 0; background: var(--bg); }
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+    }
+    .case-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: border-color .2s, transform .22s;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease, border-color .2s;
+    }
+    .case-card.in { opacity: 1; transform: none; }
+    .case-card:hover { border-color: var(--border-g); transform: translateY(-3px); }
+    .case-idx {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .case-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(19px, 2vw, 24px);
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.25;
+    }
+    .case-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .case-metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 8px;
+      border-top: 1px solid var(--border);
+    }
+    .case-metric {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--gold-bg);
+      border: 1px solid var(--gold-dim);
+      border-radius: 100px;
+      padding: 4px 12px;
+    }
+
+    /* ── WHAT I DO / HOW I WORK ───────────────────────────────────────── */
+    .what-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 52px;
+      margin-bottom: 64px;
+    }
+    .what-pillar {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px 24px;
+      background: var(--bg-2);
+      transition: border-color .2s;
+    }
+    .what-pillar:hover { border-color: var(--border-g); }
+    .what-pillar-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(20px, 2.2vw, 26px);
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .what-pillar-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+    .how-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 28px;
+    }
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+    .how-card {
+      padding: 36px 28px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .how-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .how-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: clamp(19px, 1.8vw, 22px);
+      font-weight: 600;
+      font-style: italic;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+    .how-desc {
+      font-size: 14px;
+      color: var(--text-2);
+      line-height: 1.65;
+    }
+
+    /* ── ABOUT ────────────────────────────────────────────────────────── */
+    #about { padding: 100px 0; background: var(--bg-2); }
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      margin-top: 52px;
+    }
+    .about-text {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.8;
+    }
+    .about-text p { margin: 0 0 20px; }
+    .about-text p:last-child { margin: 0; }
+    .about-text strong { color: var(--text); font-weight: 600; }
+    .about-interests { display: flex; flex-direction: column; gap: 20px; }
+    .about-interest-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 22px 20px;
+      background: var(--bg);
+      transition: border-color .2s;
+    }
+    .about-interest-card:hover { border-color: var(--border-g); }
+    .about-interest-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+    .about-interest-desc {
+      font-size: 13px;
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
     /* ── FOOTER ──────────────────────────────────────────────────────── */
     footer {
       background: var(--bg-2); border-top: 1px solid var(--border);
@@ -649,9 +833,14 @@
     @media (max-width: 820px) {
       .stats { grid-template-columns: repeat(2,1fr); max-width: 100%; }
       .impact-grid { grid-template-columns: repeat(2, 1fr); }
-      .impact-card--wide { flex-direction: column; gap: 10px; }      .cred-wrap { grid-template-columns: 1fr; gap: 52px; }
+      .impact-card--wide { flex-direction: column; gap: 10px; }
+      .cred-wrap { grid-template-columns: 1fr; gap: 52px; }
       .ref-grid { grid-template-columns: 1fr; }
       .vol-grid { grid-template-columns: 1fr; }
+      .case-grid { grid-template-columns: 1fr; }
+      .what-pillars { grid-template-columns: 1fr; gap: 12px; }
+      .how-grid { grid-template-columns: 1fr; }
+      .about-wrap { grid-template-columns: 1fr; gap: 40px; }
       /* On tablet: keep photo at 52% so S-curve stays at the photo edge */
       .hero-inner { max-width: min(560px, 46vw); }
     }
@@ -662,8 +851,11 @@
       .impact-grid { grid-template-columns: 1fr; }
       .impact-card { padding: 28px 20px; }
       .impact-num { font-size: 48px; }
-      section, #skills, #experience, #credentials,
-      #volunteer, #references, #languages { padding: 60px 0; }
+      section, #skills, #experience, #credentials, #selected-impact,
+      #about, #volunteer, #references, #languages { padding: 60px 0; }
+      .case-grid { margin-top: 32px; }
+      .what-pillars { margin-top: 32px; margin-bottom: 40px; }
+      .about-wrap { margin-top: 32px; }
 
       /* ── Hero: image on top, content stacked below ── */
       #hero {
@@ -745,10 +937,10 @@
     <div class="nav-row">
       <span class="nav-logo">Alona Korober</span>
       <div class="nav-links">
-        <a href="#skills">Skills</a>
+        <a href="#selected-impact">Impact</a>
+        <a href="#skills">What I Do</a>
         <a href="#experience">Experience</a>
-        <a href="#credentials">Education</a>
-        <a href="#references">References</a>
+        <a href="#about">About</a>
         <a href="mailto:Alona.korober@gmail.com" style="border:1px solid var(--border-g);padding:6px 16px;border-radius:100px;color:var(--gold);display:inline-flex;align-items:center;line-height:1;">Contact</a>
         <a href="Alona_Resume.pdf" download style="border:1px solid var(--border);padding:6px 16px;border-radius:100px;color:var(--text-2);display:inline-flex;align-items:center;gap:6px;line-height:1;transition:all .2s;" onmouseover="this.style.borderColor='var(--border-g)';this.style.color='var(--gold)'" onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--text-2)'">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M3 17v2a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2"/></svg>
@@ -792,11 +984,11 @@
       <h1 class="hero-name reveal" data-delay="1">
         Alona<br><em>Korober</em>
       </h1>
-      <p class="hero-subtitle reveal" data-delay="2">
-        Chief Operating Officer · General Manager<br>HR & People Leader · San Jose, CA
+      <p class="hero-tagline reveal" data-delay="2">
+        I build teams that keep performing when circumstances change.
       </p>
-      <p class="hero-meta reveal" data-delay="2">
-        <span class="dot"></span> 12+ years scaling organizations &amp; building human-first cultures
+      <p class="hero-subtitle reveal" data-delay="2">
+        General Manager · COO · Business Operations
       </p>
 
       <div class="hero-contact reveal" data-delay="3">
@@ -865,12 +1057,130 @@
   </div>
 </section>
 
+<!-- ── SELECTED IMPACT ───────────────────────────────────────────────── -->
+<section id="selected-impact">
+  <div class="w">
+    <p class="label reveal">03 — Case Studies</p>
+    <h2 class="section-title reveal" data-delay="1">Selected Impact</h2>
+    <div class="case-grid">
+
+      <div class="case-card reveal">
+        <div class="case-idx">01 — Scaling the Organization</div>
+        <div class="case-title">Building an Operating Structure for 7× Growth</div>
+        <div class="case-desc">Helped scale the business from 50 to 370+ employees while building the operating structure, functions, and management systems needed to support growth. Built 8+ major functions from scratch — HR, QA, IT, Facilities, Office Management — and expanded the sales structure to ~14 teams.</div>
+        <div class="case-metrics">
+          <span class="case-metric">50 → 370+ employees</span>
+          <span class="case-metric">10×+ profit growth</span>
+          <span class="case-metric">8+ functions built</span>
+        </div>
+      </div>
+
+      <div class="case-card reveal" data-delay="1">
+        <div class="case-idx">02 — In-House Growth Engine</div>
+        <div class="case-title">Building an Internal Lead-Generation Function</div>
+        <div class="case-desc">Built an internal lead-generation function as an alternative to purchased leads, connecting sales, media, technical support, and analytics into one operating model. Internally generated leads converted at 60–75% vs. 3–6% for purchased leads.</div>
+        <div class="case-metrics">
+          <span class="case-metric">60–75% conversion vs. 3–6%</span>
+          <span class="case-metric">40–70% higher revenue/lead</span>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-idx">03 — Training into Performance</div>
+        <div class="case-title">Connecting Onboarding, QA, and Coaching into a Continuous Loop</div>
+        <div class="case-desc">Built a training and QA system that connected onboarding, call analysis, coaching, manager follow-up, and performance feedback into one continuous improvement process. Employees who completed structured training showed 4× higher 1-year retention and 2–4× higher sales efficiency.</div>
+        <div class="case-metrics">
+          <span class="case-metric">2–4× sales efficiency/lead</span>
+          <span class="case-metric">4× higher 1-year retention</span>
+        </div>
+      </div>
+
+      <div class="case-card reveal" data-delay="1">
+        <div class="case-idx">04 — COVID Operations</div>
+        <div class="case-title">Restoring an Office-Based Business in ~2 Days</div>
+        <div class="case-desc">When transportation restrictions disrupted an office-based business, redesigned employee logistics and restored full in-office operations in approximately 2 days. The company continued hiring and grew from 250 to 370 employees during the period — a 48% workforce increase.</div>
+        <div class="case-metrics">
+          <span class="case-metric">~2 days to restore ops</span>
+          <span class="case-metric">+48% workforce growth</span>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-idx">05 — Security &amp; Data Integrity</div>
+        <div class="case-title">97% Reduction in Lead Losses via CRM &amp; Process Rebuild</div>
+        <div class="case-desc">Redesigned CRM workflows, access controls, and internal security processes to reduce revenue leakage and create clearer accountability around sensitive business data. Lead loss rate dropped from approximately 15% to 0.5%.</div>
+        <div class="case-metrics">
+          <span class="case-metric">~97% reduction in lead losses</span>
+          <span class="case-metric">15% → 0.5% loss rate</span>
+        </div>
+      </div>
+
+      <div class="case-card reveal" data-delay="1">
+        <div class="case-idx">06 — Office Launch</div>
+        <div class="case-title">Launching a 250-Person Office in ~3 Months</div>
+        <div class="case-desc">Led the end-to-end launch of a new office from site selection and contracting through layout, renovation, infrastructure, equipment, and opening. Full responsibility from first walkthrough to day-one operations for a 220–250-person capacity facility.</div>
+        <div class="case-metrics">
+          <span class="case-metric">220–250-person capacity</span>
+          <span class="case-metric">~3 months start to launch</span>
+        </div>
+      </div>
+
+      <div class="case-card reveal">
+        <div class="case-idx">07 — Culture &amp; Continuity</div>
+        <div class="case-title">Building a Culture That Outlasted Leadership Transitions</div>
+        <div class="case-desc">Built management routines, internal career paths, and ways of working that strengthened trust and responsibility across teams. The culture continued through rapid growth, COVID, war, the loss of the owner, and eventually a planned departure — with virtually all management roles filled internally.</div>
+        <div class="case-metrics">
+          <span class="case-metric">~95% manager retention</span>
+          <span class="case-metric">All roles filled internally</span>
+          <span class="case-metric">~3 months autonomous ops</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ── SKILLS ────────────────────────────────────────────────────────── -->
 <section id="skills">
   <div class="w">
-    <p class="label reveal">03 — Core Competencies</p>
-    <h2 class="section-title reveal" data-delay="1">Skills &amp; Expertise</h2>
+    <p class="label reveal">04 — Approach &amp; Capabilities</p>
+    <h2 class="section-title reveal" data-delay="1">What I Do</h2>
 
+    <div class="what-pillars">
+      <div class="what-pillar reveal">
+        <div class="what-pillar-title">Build &amp; Scale</div>
+        <div class="what-pillar-desc">I build teams, functions, processes, and the connections between them — especially where structure does not yet exist or no longer works at the scale the business has reached.</div>
+      </div>
+      <div class="what-pillar reveal" data-delay="1">
+        <div class="what-pillar-title">Solve Across Functions</div>
+        <div class="what-pillar-desc">I look beyond the department where a problem first appears, identify what is actually getting in the way of results, bring the right people together, and drive the solution through execution.</div>
+      </div>
+      <div class="what-pillar reveal" data-delay="2">
+        <div class="what-pillar-title">Build to Last</div>
+        <div class="what-pillar-desc">I turn successful solutions into ways of working that teams can understand, use, and continue improving themselves — so the business doesn't depend on any one person to keep performing.</div>
+      </div>
+    </div>
+
+    <div class="how-label reveal">How I Work</div>
+    <div class="how-grid">
+      <div class="how-card reveal">
+        <div class="how-num">01</div>
+        <div class="how-title">I build structure.</div>
+        <div class="how-desc">I build the teams, roles, processes, and cross-functional connections that give people clarity and allow the business to grow without adding unnecessary complexity.</div>
+      </div>
+      <div class="how-card reveal" data-delay="1">
+        <div class="how-num">02</div>
+        <div class="how-title">I bring people together.</div>
+        <div class="how-desc">I align people across functions around shared goals, help them understand how their work affects one another, and create the conditions for better decisions and stronger execution.</div>
+      </div>
+      <div class="how-card reveal" data-delay="2">
+        <div class="how-num">03</div>
+        <div class="how-title">I create room to improve.</div>
+        <div class="how-desc">I set clear expectations and guardrails, then give people room to question, suggest, test, and improve how the work gets done.</div>
+      </div>
+    </div>
+
+    <p class="label reveal" style="margin-top:60px;margin-bottom:28px">Core Competencies</p>
     <div class="tab-bar reveal" data-delay="2">
       <button class="tab on" data-tab="leadership">Core Leadership</button>
       <button class="tab" data-tab="hr">HR &amp; People</button>
@@ -945,7 +1255,7 @@
 <!-- ── EXPERIENCE ─────────────────────────────────────────────────────── -->
 <section id="experience">
   <div class="w">
-    <p class="label reveal">04 — Professional History</p>
+    <p class="label reveal">05 — Professional History</p>
     <h2 class="section-title reveal" data-delay="1">Experience</h2>
 
     <div class="timeline">
@@ -1098,7 +1408,7 @@
 <!-- ── CREDENTIALS ────────────────────────────────────────────────────── -->
 <section id="credentials">
   <div class="w">
-    <p class="label reveal">05 — Academic &amp; Professional</p>
+    <p class="label reveal">06 — Academic &amp; Professional</p>
     <h2 class="section-title reveal" data-delay="1">Education &amp; Certifications</h2>
 
     <div class="cred-wrap">
@@ -1112,7 +1422,7 @@
               <div class="edu-deg">Coursework: Psychology &amp; Leadership</div>
               <div class="edu-inst">Evergreen Valley College</div>
               <div class="edu-place">San Jose, CA</div>
-              <div class="edu-note">Human Relations/Leadership · Research Methods · General Psychology · Stress Reduction · Developmental &amp; Social Psychology</div>
+              <div class="edu-note">Human Relations &amp; Leadership · Research Methods &amp; Data Analysis · Social Psychology · Developmental Psychology · Stress Reduction</div>
             </div>
           </div>
           <div class="edu-row reveal" data-delay="1">
@@ -1136,71 +1446,72 @@
 
       <!-- Certifications -->
       <div>
-        <p class="label reveal" style="margin-bottom:24px">Certifications</p>
+        <p class="label reveal" style="margin-bottom:24px">Professional Development</p>
         <div class="cert-list">
-          <div class="cert-row reveal">
-            <div class="cert-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-            </div>
-            <div>
-              <div class="cert-name">PHRca Certification (HRCI) — HR Associate, California</div>
-              <div class="cert-meta">2026</div>
-            </div>
-          </div>
-          <div class="cert-row reveal" data-delay="1">
-            <div class="cert-icon">
+
+          <!-- Business & Project -->
+          <div class="cert-row reveal" style="align-items:flex-start;padding-bottom:8px;">
+            <div class="cert-icon" style="margin-top:3px;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg>
             </div>
             <div>
-              <div class="cert-name">Google Project Management Certificate</div>
-              <div class="cert-meta">Google Career Certificates · 2026</div>
+              <div class="cert-name" style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:10px;">Business, Project &amp; Commercial</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div><div class="cert-name">Google Project Management Professional Certificate</div><div class="cert-meta">Google Career Certificates / Coursera · 2026</div></div>
+                <div><div class="cert-name">Building a Sales Department</div><div class="cert-meta">Business Constructor · 2017</div></div>
+                <div><div class="cert-name">Financing of SME Fleets: Attracting New Clients &amp; Negotiating</div><div class="cert-meta">Porsche Finance Group Ukraine · 2017</div></div>
+                <div><div class="cert-name">Public Procurement &amp; Tender Participation</div><div class="cert-meta">Pravoe Delo / Zakupki.prom.ua · 2016</div></div>
+                <div><div class="cert-name">Financial Literacy and Social Independence</div><div class="cert-meta">Expanding Opportunities · 2015</div></div>
+                <div><div class="cert-name">Business Youth — Entrepreneurship Training Course</div><div class="cert-meta">Business Youth · 2011</div></div>
+              </div>
             </div>
           </div>
-          <div class="cert-row reveal" data-delay="1">
-            <div class="cert-icon">
+
+          <!-- People & Org -->
+          <div class="cert-row reveal" data-delay="1" style="align-items:flex-start;padding-bottom:8px;">
+            <div class="cert-icon" style="margin-top:3px;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
             </div>
             <div>
-              <div class="cert-name">Building Diverse, Inclusive &amp; Safe Workplaces</div>
-              <div class="cert-meta">Coursera · 2026</div>
+              <div class="cert-name" style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:10px;">People &amp; Organizational Development</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div><div class="cert-name">HRCI Human Resource Associate Professional Certificate</div><div class="cert-meta">HRCI / Coursera · 2026</div></div>
+                <div><div class="cert-name">PHRca Exam Preparation — California HR Compliance</div><div class="cert-meta">HRCI · In Progress, 2026</div></div>
+                <div><div class="cert-name">Building Diverse, Inclusive &amp; Safe Workplaces Specialization</div><div class="cert-meta">Coursera · 2026</div></div>
+                <div><div class="cert-name">Psychological First Aid</div><div class="cert-meta">Johns Hopkins University / Coursera · 2026</div></div>
+                <div><div class="cert-name">Decisions &amp; Perspectives — Emotional Leadership Development</div><div class="cert-meta">Decisions and Perspectives · 2012</div></div>
+              </div>
             </div>
           </div>
-          <div class="cert-row reveal" data-delay="2">
-            <div class="cert-icon">
+
+          <!-- Analytics -->
+          <div class="cert-row reveal" data-delay="2" style="align-items:flex-start;padding-bottom:8px;">
+            <div class="cert-icon" style="margin-top:3px;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             </div>
             <div>
-              <div class="cert-name">People Analytics</div>
-              <div class="cert-meta">Wharton / University of Pennsylvania · 2026</div>
+              <div class="cert-name" style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:10px;">Analytics &amp; Decision-Making</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div><div class="cert-name">People Analytics</div><div class="cert-meta">The Wharton School, University of Pennsylvania / Coursera · 2026</div></div>
+                <div><div class="cert-name">Human Resources Analytics</div><div class="cert-meta">University of California, Irvine / Coursera · 2026</div></div>
+                <div><div class="cert-name">Excel Skills for Business: Essentials</div><div class="cert-meta">Macquarie University / Coursera · 2026</div></div>
+              </div>
             </div>
           </div>
-          <div class="cert-row reveal" data-delay="2">
-            <div class="cert-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <div>
-              <div class="cert-name">Human Resources Analytics</div>
-              <div class="cert-meta">UC Irvine · 2026</div>
-            </div>
-          </div>
-          <div class="cert-row reveal" data-delay="3">
-            <div class="cert-icon">
+
+          <!-- AI & Digital -->
+          <div class="cert-row reveal" data-delay="3" style="align-items:flex-start;">
+            <div class="cert-icon" style="margin-top:3px;">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
             </div>
             <div>
-              <div class="cert-name">From Beginner to Expert in AI</div>
-              <div class="cert-meta">AcademyOcean · 2025</div>
+              <div class="cert-name" style="font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:10px;">AI &amp; Digital Capability</div>
+              <div style="display:flex;flex-direction:column;gap:8px;">
+                <div><div class="cert-name">From Beginner to Expert in AI</div><div class="cert-meta">AcademyOcean / Netpeak Group · 2025 · 6-module program</div></div>
+              </div>
             </div>
           </div>
-          <div class="cert-row reveal" data-delay="3">
-            <div class="cert-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div>
-              <div class="cert-name">AMFT — Associate Marriage &amp; Family Therapist</div>
-              <div class="cert-meta">BBS · In Progress</div>
-            </div>
-          </div>
+
         </div>
       </div>
     </div>
@@ -1241,35 +1552,66 @@
   </div>
 </section>
 
+<!-- ── ABOUT ─────────────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="w">
+    <p class="label reveal">08 — Beyond the Resume</p>
+    <h2 class="section-title reveal" data-delay="1">About</h2>
+    <div class="about-wrap">
+      <div class="about-text reveal">
+        <p>I've never built my career around staying inside one function. My background spans business operations, sales, people management, entrepreneurship, international business, client service, project execution, and hands-on operational work. I have launched a small business, helped start production operations, worked with corporate and government clients, supported international business projects, and eventually grew into COO and General Manager responsibility.</p>
+        <p>That range taught me something I still rely on today: when I enter an unfamiliar problem, I am comfortable learning how the system works before deciding how to fix it. I do not need every problem to fit neatly inside my previous job description.</p>
+        <p>My academic background in psychology and fine art and design adds another dimension to how I work. <strong>Psychology</strong> helps me understand people, motivation, conflict, and group dynamics. <strong>Design</strong> trained me to look at structure, relationships, and how separate elements work together.</p>
+        <p>I value clear expectations, mutual respect, honesty, and reliability. At the same time, I believe people do their best work when they have enough freedom to think, challenge assumptions, bring ideas forward, and improve the way things are done.</p>
+        <p>I am most interested in environments where there is real responsibility, strong people, measurable business impact, and room to grow.</p>
+      </div>
+      <div class="about-interests reveal" data-delay="1">
+        <div class="about-interest-card">
+          <div class="about-interest-title">Mountains &amp; Caves</div>
+          <div class="about-interest-desc">Long ascents, high altitude, changing conditions. Mountains teach adaptation, discomfort, and the difference between temporary difficulty and a real limit. On serious ascents — especially as a rope team — people are genuinely responsible for one another. Caving challenges me differently: technical preparation, emotional control, and decision-making under pressure in confined spaces.</div>
+        </div>
+        <div class="about-interest-card">
+          <div class="about-interest-title">Curiosity, Making &amp; Culture</div>
+          <div class="about-interest-desc">My first degree was in Fine Art and Design. I enjoy photography, drawing, sewing, building and repairing things, and working with plants. The same curiosity draws me to technology, engineering, and science. I love live theater — the combination of acting, writing, costume, music, and staging happening in real time. And when I travel, one of the first things I explore is the local food.</div>
+        </div>
+        <div class="about-interest-card">
+          <div class="about-interest-title">International Background</div>
+          <div class="about-interest-desc">Born in Ukraine, built a career across multiple industries and contexts, now based in San Jose, CA. That range — across geographies, industries, and types of organizations — is part of how I think and the lens through which I approach new problems.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ── VOLUNTEER ───────────────────────────────────────────────────────── -->
 <section id="volunteer">
   <div class="w">
-    <p class="label reveal">Community &amp; Impact</p>
-    <h2 class="section-title reveal" data-delay="1">Volunteer Leadership</h2>
+    <p class="label reveal">09 — Giving Back</p>
+    <h2 class="section-title reveal" data-delay="1">Community &amp; Impact</h2>
     <div class="vol-grid">
       <div class="vol-card reveal">
         <div class="vol-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <div class="vol-t">Community Park &amp; Embankment Revitalization</div>
+        <div class="vol-t">Public Spaces &amp; Community Projects</div>
         <div class="vol-s">Kherson, Ukraine</div>
-        <div class="vol-d">Initiated and led a comprehensive park revitalization project. Organised sponsor search, volunteer coordination, community engagement, landscaping, and event execution.</div>
+        <div class="vol-d">Participated in recurring community improvement initiatives, including a full park and embankment revitalization in partnership with local government, sponsors, volunteers, and community members — from planning and fundraising to cleanup, landscaping, and public activities.</div>
       </div>
       <div class="vol-card reveal" data-delay="1">
         <div class="vol-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         </div>
-        <div class="vol-t">Crisis Response &amp; Humanitarian Leadership</div>
-        <div class="vol-s">War Crisis Response</div>
-        <div class="vol-d">Coordinated humanitarian aid distribution and emergency assistance. Organised charity auctions and relief efforts for affected communities and vulnerable populations.</div>
+        <div class="vol-t">Humanitarian Relief</div>
+        <div class="vol-s">Ukraine — Wartime Response</div>
+        <div class="vol-d">During the full-scale war in Ukraine, helped organize fundraising, charity auctions, evacuations, medicine and food deliveries, support for displaced families and military personnel, and recovery efforts. Following the destruction of the Kakhovka Dam, helped send a vehicle loaded with water filters, food, and essential supplies to affected communities.</div>
       </div>
       <div class="vol-card reveal" data-delay="2">
         <div class="vol-ico">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         </div>
-        <div class="vol-t">Support Programs for Orphaned Children</div>
-        <div class="vol-s">Community Engagement</div>
-        <div class="vol-d">Organised creative activities, mentorship, and support programs. Built community connections demonstrating long-term commitment to vulnerable populations.</div>
+        <div class="vol-t">Children &amp; Youth</div>
+        <div class="vol-s">Residential Care &amp; Community Programs</div>
+        <div class="vol-d">Volunteered with children in residential care, including children with disabilities and serious health conditions. Organized visits, games, workshops, and social activities, as well as a weekly board-game club for older teenagers. Material support matters — but time, attention, and genuine human connection often matter more.</div>
       </div>
     </div>
   </div>
@@ -1278,7 +1620,7 @@
 <!-- ── REFERENCES ─────────────────────────────────────────────────────── -->
 <section id="references">
   <div class="w">
-    <p class="label reveal">04 — Testimonials</p>
+    <p class="label reveal">10 — Testimonials</p>
     <h2 class="section-title reveal" data-delay="1">References</h2>
     <div class="ref-grid">
       <div class="ref-card reveal">
@@ -1322,7 +1664,7 @@
       </div>
       <div class="ft-links">
         <a href="mailto:Alona.korober@gmail.com">Email</a>
-        <a href="tel:+14086405312">Phone</a>
+        <a href="Alona_Resume.pdf" download>Resume</a>
         <a href="#hero">Back to top</a>
         <button id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
           <!-- icon swapped by JS -->
@@ -1406,6 +1748,16 @@ const impactCardObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.35, rootMargin: '0px 0px -60px 0px' });
 document.querySelectorAll('.impact-card').forEach(card => impactCardObs.observe(card));
+
+/* ── Case card scroll-in ──────────────────────────────────────── */
+const caseCardObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    caseCardObs.unobserve(e.target);
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.case-card').forEach(card => caseCardObs.observe(card));
 
 /* ── Language bars ────────────────────────────────────────────── */
 const langObs = new IntersectionObserver((entries) => {
