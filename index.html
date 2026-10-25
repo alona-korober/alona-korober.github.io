@@ -879,24 +879,52 @@
     #about { padding: 100px 0; background: var(--bg-2); }
     .about-wrap {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      grid-template-columns: 340px 1fr;
+      gap: 64px;
       align-items: start;
       margin-top: 52px;
     }
+    .about-photo-col {
+      position: sticky;
+      top: 88px;
+    }
+    .about-photo {
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .about-photo img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .about-right {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
     .about-text {
-      font-size: 16px;
+      font-size: 15.5px;
       color: var(--text-2);
-      line-height: 1.8;
+      line-height: 1.82;
     }
     .about-text p { margin: 0 0 20px; }
     .about-text p:last-child { margin: 0; }
     .about-text strong { color: var(--text); font-weight: 600; }
-    .about-interests { display: flex; flex-direction: column; gap: 20px; }
+    .about-interests { display: flex; flex-direction: column; gap: 12px; }
+    .about-interests-label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      margin-bottom: 4px;
+    }
     .about-interest-card {
       border: 1px solid var(--border);
       border-radius: 10px;
-      padding: 22px 20px;
+      padding: 18px 20px;
       background: var(--bg);
       transition: border-color .2s;
     }
@@ -906,7 +934,7 @@
       font-size: 13px;
       font-weight: 600;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
     .about-interest-desc {
       font-size: 13px;
@@ -958,6 +986,8 @@
       .what-pillars { grid-template-columns: 1fr; gap: 12px; }
       .how-grid { grid-template-columns: 1fr; }
       .about-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .about-photo-col { position: static; }
+      .about-photo { max-width: 380px; }
       .cert-gallery-grid { grid-template-columns: repeat(2, 1fr); }
       /* On tablet: keep photo at 52% so S-curve stays at the photo edge */
       .hero-inner { max-width: min(560px, 46vw); }
@@ -974,6 +1004,9 @@
       .case-grid { margin-top: 32px; }
       .what-pillars { margin-top: 32px; margin-bottom: 40px; }
       .about-wrap { margin-top: 32px; }
+      .about-photo-col { position: static; }
+      .about-photo { border-radius: 10px; }
+      .about-photo img { max-height: 70vw; object-position: center 20%; }
 
       /* ── Hero: image on top, content stacked below ── */
       #hero {
@@ -1754,27 +1787,41 @@
     <p class="label reveal">08 — Beyond the Resume</p>
     <h2 class="section-title reveal" data-delay="1">About</h2>
     <div class="about-wrap">
-      <div class="about-text reveal">
-        <p>I've never built my career around staying inside one function. My background spans business operations, sales, people management, entrepreneurship, international business, client service, project execution, and hands-on operational work. I have launched a small business, helped start production operations, worked with corporate and government clients, supported international business projects, and eventually grew into COO and General Manager responsibility.</p>
-        <p>That range taught me something I still rely on today: when I enter an unfamiliar problem, I am comfortable learning how the system works before deciding how to fix it. I do not need every problem to fit neatly inside my previous job description.</p>
-        <p>My academic background in psychology and fine art and design adds another dimension to how I work. <strong>Psychology</strong> helps me understand people, motivation, conflict, and group dynamics. <strong>Design</strong> trained me to look at structure, relationships, and how separate elements work together.</p>
-        <p>I value clear expectations, mutual respect, honesty, and reliability. At the same time, I believe people do their best work when they have enough freedom to think, challenge assumptions, bring ideas forward, and improve the way things are done.</p>
-        <p>I am most interested in environments where there is real responsibility, strong people, measurable business impact, and room to grow.</p>
-      </div>
-      <div class="about-interests reveal" data-delay="1">
-        <div class="about-interest-card">
-          <div class="about-interest-title">Mountains &amp; Caves</div>
-          <div class="about-interest-desc">Long ascents, high altitude, changing conditions. Mountains teach adaptation, discomfort, and the difference between temporary difficulty and a real limit. On serious ascents — especially as a rope team — people are genuinely responsible for one another. Caving challenges me differently: technical preparation, emotional control, and decision-making under pressure in confined spaces.</div>
-        </div>
-        <div class="about-interest-card">
-          <div class="about-interest-title">Curiosity, Making &amp; Culture</div>
-          <div class="about-interest-desc">My first degree was in Fine Art and Design. I enjoy photography, drawing, sewing, building and repairing things, and working with plants. The same curiosity draws me to technology, engineering, and science. I love live theater — the combination of acting, writing, costume, music, and staging happening in real time. And when I travel, one of the first things I explore is the local food.</div>
-        </div>
-        <div class="about-interest-card">
-          <div class="about-interest-title">International Background</div>
-          <div class="about-interest-desc">Born in Ukraine, built a career across multiple industries and contexts, now based in San Jose, CA. That range — across geographies, industries, and types of organizations — is part of how I think and the lens through which I approach new problems.</div>
+
+      <!-- Left: sticky photo -->
+      <div class="about-photo-col reveal">
+        <div class="about-photo">
+          <img src="about-web.jpg" alt="Alona Korober" loading="lazy">
         </div>
       </div>
+
+      <!-- Right: bio text + interest cards -->
+      <div class="about-right">
+        <div class="about-text reveal" data-delay="1">
+          <p>I've never built my career around staying inside one function. My background spans business operations, sales, people management, entrepreneurship, international business, client service, project execution, and hands-on operational work. I have launched a small business, helped start production operations, worked with corporate and government clients, supported international business projects, and eventually grew into COO and General Manager responsibility.</p>
+          <p>That range taught me something I still rely on today: when I enter an unfamiliar problem, I am comfortable learning how the system works before deciding how to fix it. I do not need every problem to fit neatly inside my previous job description.</p>
+          <p>My academic background in psychology and fine art and design adds another dimension to how I work. <strong>Psychology</strong> helps me understand people, motivation, conflict, and group dynamics. <strong>Design</strong> trained me to look at structure, relationships, and how separate elements work together.</p>
+          <p>I value clear expectations, mutual respect, honesty, and reliability. At the same time, I believe people do their best work when they have enough freedom to think, challenge assumptions, bring ideas forward, and improve the way things are done.</p>
+          <p>I am most interested in environments where there is real responsibility, strong people, measurable business impact, and room to grow.</p>
+        </div>
+
+        <div class="about-interests reveal" data-delay="2">
+          <div class="about-interests-label">Outside the office</div>
+          <div class="about-interest-card">
+            <div class="about-interest-title">Mountains &amp; Caves</div>
+            <div class="about-interest-desc">Long ascents, high altitude, changing conditions. Mountains teach adaptation, discomfort, and the difference between temporary difficulty and a real limit. On serious ascents — especially as a rope team — people are genuinely responsible for one another. Caving challenges me differently: technical preparation, emotional control, and decision-making under pressure in confined spaces.</div>
+          </div>
+          <div class="about-interest-card">
+            <div class="about-interest-title">Curiosity, Making &amp; Culture</div>
+            <div class="about-interest-desc">My first degree was in Fine Art and Design. I enjoy photography, drawing, sewing, building and repairing things, and working with plants. The same curiosity draws me to technology, engineering, and science. I love live theater — the combination of acting, writing, costume, music, and staging happening in real time. And when I travel, one of the first things I explore is the local food.</div>
+          </div>
+          <div class="about-interest-card">
+            <div class="about-interest-title">International Background</div>
+            <div class="about-interest-desc">Born in Ukraine, built a career across multiple industries and contexts, now based in San Jose, CA. That range — across geographies, industries, and types of organizations — is part of how I think and the lens through which I approach new problems.</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
