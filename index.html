@@ -758,6 +758,123 @@
       line-height: 1.65;
     }
 
+    /* ── CERT GALLERY ─────────────────────────────────────────────────── */
+    #cert-gallery { padding: 80px 0 100px; background: var(--bg); }
+    .cert-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-top: 40px;
+    }
+    .cert-thumb-card {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color .2s, transform .22s, box-shadow .22s;
+      background: var(--bg-2);
+    }
+    .cert-thumb-card:hover {
+      border-color: var(--border-g);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 32px rgba(0,0,0,.1);
+    }
+    .cert-thumb-img {
+      width: 100%;
+      aspect-ratio: 3/2;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      background: var(--bg-3);
+    }
+    .cert-thumb-info {
+      padding: 12px 14px;
+      border-top: 1px solid var(--border);
+    }
+    .cert-thumb-name {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 3px;
+    }
+    .cert-thumb-meta {
+      font-size: 11px;
+      color: var(--text-3);
+    }
+    .cert-thumb-card .cert-view-hint {
+      font-size: 10px;
+      color: var(--gold);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* ── LIGHTBOX ─────────────────────────────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.9);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+    #lightbox.open { display: flex; }
+    #lightbox-img {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 6px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+      object-fit: contain;
+    }
+    .lb-close {
+      position: fixed;
+      top: 18px; right: 20px;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .18s;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .lb-close:hover { background: rgba(255,255,255,.24); }
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.13);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .18s;
+    }
+    .lb-nav:hover { background: rgba(255,255,255,.24); }
+    .lb-prev { left: 16px; }
+    .lb-next { right: 16px; }
+    .lb-counter {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: rgba(255,255,255,.55);
+      font-family: 'Space Grotesk', sans-serif;
+      letter-spacing: .08em;
+    }
+
     /* ── ABOUT ────────────────────────────────────────────────────────── */
     #about { padding: 100px 0; background: var(--bg-2); }
     .about-wrap {
@@ -841,6 +958,7 @@
       .what-pillars { grid-template-columns: 1fr; gap: 12px; }
       .how-grid { grid-template-columns: 1fr; }
       .about-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .cert-gallery-grid { grid-template-columns: repeat(2, 1fr); }
       /* On tablet: keep photo at 52% so S-curve stays at the photo edge */
       .hero-inner { max-width: min(560px, 46vw); }
     }
@@ -852,7 +970,7 @@
       .impact-card { padding: 28px 20px; }
       .impact-num { font-size: 48px; }
       section, #skills, #experience, #credentials, #selected-impact,
-      #about, #volunteer, #references, #languages { padding: 60px 0; }
+      #about, #volunteer, #references, #languages, #cert-gallery { padding: 60px 0; }
       .case-grid { margin-top: 32px; }
       .what-pillars { margin-top: 32px; margin-bottom: 40px; }
       .about-wrap { margin-top: 32px; }
@@ -1439,6 +1557,10 @@
               <div class="edu-deg">Master's in Fine Art &amp; Design</div>
               <div class="edu-inst">Kyiv University of Culture and Arts</div>
               <div class="edu-place">Kyiv, Ukraine</div>
+              <div class="edu-note" style="margin-top:8px;">
+                US equivalent: BFA + MFA in Decorative and Applied Arts (GPA 3.297 / 4.000) ·
+                <button onclick="openLb(7)" style="background:none;border:none;padding:0;color:var(--gold);font-size:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">View Scholaro evaluation ↗</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1514,6 +1636,80 @@
 
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERT GALLERY ───────────────────────────────────────────────────── -->
+<section id="cert-gallery">
+  <div class="w">
+    <p class="label reveal">07 — Verified Credentials</p>
+    <h2 class="section-title reveal" data-delay="1">Certificate Gallery</h2>
+    <div class="cert-gallery-grid">
+
+      <div class="cert-thumb-card reveal" onclick="openLb(0)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750366032516.jpeg" alt="AI Training Certificate" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">From Beginner to Expert in AI</div>
+          <div class="cert-thumb-meta">AcademyOcean / Netpeak Group · 2025</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
+      <div class="cert-thumb-card reveal" data-delay="1" onclick="openLb(1)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750364248926.jpeg" alt="Building a Sales Department Certificate" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">Building a Sales Department</div>
+          <div class="cert-thumb-meta">Business Constructor · 2017</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
+      <div class="cert-thumb-card reveal" data-delay="2" onclick="openLb(2)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750364905420.jpeg" alt="Porsche Finance Group Certificate" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">SME Fleet Financing &amp; Negotiation</div>
+          <div class="cert-thumb-meta">Porsche Finance Group Ukraine · 2017</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
+      <div class="cert-thumb-card reveal" data-delay="3" onclick="openLb(3)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750365297548.jpeg" alt="Public Procurement Certificate" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">Public Procurement &amp; Tenders</div>
+          <div class="cert-thumb-meta">Pravoe Delo / Zakupki.prom.ua · 2016</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
+      <div class="cert-thumb-card reveal" onclick="openLb(4)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750365383427.jpeg" alt="Emotional Leadership Diploma" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">Emotional Leadership Development</div>
+          <div class="cert-thumb-meta">Decisions &amp; Perspectives · 2012</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
+      <div class="cert-thumb-card reveal" data-delay="1" onclick="openLb(5)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750365587114.jpeg" alt="USAID Financial Literacy Certificate" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">Financial Literacy &amp; Social Independence</div>
+          <div class="cert-thumb-meta">USAID / Expanding Opportunities · 2015</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
+      <div class="cert-thumb-card reveal" data-delay="2" onclick="openLb(6)">
+        <img class="cert-thumb-img" src="certificates%20and%20education/1750364440890.jpeg" alt="Business Youth Certificate" loading="lazy">
+        <div class="cert-thumb-info">
+          <div class="cert-thumb-name">Business Youth — Entrepreneurship</div>
+          <div class="cert-thumb-meta">Business Youth · 2011</div>
+          <div class="cert-view-hint">Tap to view ↗</div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1639,7 +1835,7 @@
         <div class="ref-org">Evergreen Valley College</div>
         <div class="ref-rule"></div>
         <div class="ref-q">"</div>
-        <div class="ref-note">Highlights top academic performance, advanced analytical skills, leadership potential, and cultural sensitivity in psychological studies.</div>
+        <div class="ref-note">Alona was among the top five students in both courses. What made her truly exceptional was her ability to convey complex ideas with confidence, creativity, and a level of professionalism that comes with extensive experience in the field. Her mastery of critical thinking, academic writing, and comparative analyses stood out. She can be a great leader and a valuable team member, equally effective in independent work and collective projects. I wholeheartedly recommend Alona without reservation.</div>
       </div>
       <div class="ref-card reveal" data-delay="2">
         <div class="ref-avatar">Y</div>
@@ -1759,6 +1955,45 @@ const caseCardObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.case-card').forEach(card => caseCardObs.observe(card));
 
+/* ── Lightbox ─────────────────────────────────────────────────── */
+const lbImages = [
+  'certificates and education/1750366032516.jpeg',
+  'certificates and education/1750364248926.jpeg',
+  'certificates and education/1750364905420.jpeg',
+  'certificates and education/1750365297548.jpeg',
+  'certificates and education/1750365383427.jpeg',
+  'certificates and education/1750365587114.jpeg',
+  'certificates and education/1750364440890.jpeg',
+  'certificates and education/1780632422162.png',
+];
+let lbIdx = 0;
+const lbEl = document.getElementById('lightbox');
+const lbImgEl = document.getElementById('lightbox-img');
+const lbCtr = document.getElementById('lb-counter');
+function openLb(idx) {
+  lbIdx = idx;
+  lbImgEl.src = lbImages[lbIdx];
+  lbCtr.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+  lbEl.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLb() {
+  lbEl.classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lbStep(dir) {
+  lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
+  lbImgEl.src = lbImages[lbIdx];
+  lbCtr.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+}
+lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (!lbEl.classList.contains('open')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowRight') lbStep(1);
+  if (e.key === 'ArrowLeft') lbStep(-1);
+});
+
 /* ── Language bars ────────────────────────────────────────────── */
 const langObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1816,5 +2051,17 @@ function toggleTheme() {
 
 syncThemeBtn(); // init button state on load
 </script>
+<!-- ── LIGHTBOX OVERLAY ───────────────────────────────────────────────── -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+  <button class="lb-close" onclick="closeLb()" aria-label="Close">&#x2715;</button>
+  <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <img id="lightbox-img" src="" alt="Certificate">
+  <button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Next">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+  </button>
+  <div class="lb-counter" id="lb-counter"></div>
+</div>
 </body>
 </html>
