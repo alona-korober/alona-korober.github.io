@@ -1637,7 +1637,7 @@
               <div class="edu-place">Kyiv, Ukraine</div>
               <div class="edu-note" style="margin-top:8px;">
                 US equivalent: BFA + MFA in Decorative and Applied Arts (GPA 3.297 / 4.000) ·
-                <button onclick="openLb(7)" style="background:none;border:none;padding:0;color:var(--gold);font-size:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">View Scholaro evaluation ↗</button>
+                <button data-lb="7" style="background:none;border:none;padding:0;color:var(--gold);font-size:inherit;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">View Scholaro evaluation ↗</button>
               </div>
             </div>
           </div>
@@ -1725,7 +1725,7 @@
     <h2 class="section-title reveal" data-delay="1">Certificate Gallery</h2>
     <div class="cert-gallery-grid">
 
-      <div class="cert-thumb-card reveal" onclick="openLb(0)">
+      <div class="cert-thumb-card reveal" data-lb="0">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750366032516.jpeg" alt="AI Training Certificate" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">From Beginner to Expert in AI</div>
@@ -1734,7 +1734,7 @@
         </div>
       </div>
 
-      <div class="cert-thumb-card reveal" data-delay="1" onclick="openLb(1)">
+      <div class="cert-thumb-card reveal" data-delay="1" data-lb="1">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750364248926.jpeg" alt="Building a Sales Department Certificate" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">Building a Sales Department</div>
@@ -1743,7 +1743,7 @@
         </div>
       </div>
 
-      <div class="cert-thumb-card reveal" data-delay="2" onclick="openLb(2)">
+      <div class="cert-thumb-card reveal" data-delay="2" data-lb="2">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750364905420.jpeg" alt="Porsche Finance Group Certificate" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">SME Fleet Financing &amp; Negotiation</div>
@@ -1752,7 +1752,7 @@
         </div>
       </div>
 
-      <div class="cert-thumb-card reveal" data-delay="3" onclick="openLb(3)">
+      <div class="cert-thumb-card reveal" data-delay="3" data-lb="3">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750365297548.jpeg" alt="Public Procurement Certificate" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">Public Procurement &amp; Tenders</div>
@@ -1761,7 +1761,7 @@
         </div>
       </div>
 
-      <div class="cert-thumb-card reveal" onclick="openLb(4)">
+      <div class="cert-thumb-card reveal" data-lb="4">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750365383427.jpeg" alt="Emotional Leadership Diploma" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">Emotional Leadership Development</div>
@@ -1770,7 +1770,7 @@
         </div>
       </div>
 
-      <div class="cert-thumb-card reveal" data-delay="1" onclick="openLb(5)">
+      <div class="cert-thumb-card reveal" data-delay="1" data-lb="5">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750365587114.jpeg" alt="USAID Financial Literacy Certificate" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">Financial Literacy &amp; Social Independence</div>
@@ -1779,7 +1779,7 @@
         </div>
       </div>
 
-      <div class="cert-thumb-card reveal" data-delay="2" onclick="openLb(6)">
+      <div class="cert-thumb-card reveal" data-delay="2" data-lb="6">
         <img class="cert-thumb-img" src="certificates%20and%20education/1750364440890.jpeg" alt="Business Youth Certificate" loading="lazy">
         <div class="cert-thumb-info">
           <div class="cert-thumb-name">Business Youth — Entrepreneurship</div>
@@ -2004,41 +2004,49 @@ document.querySelectorAll('.case-card').forEach(card => caseCardObs.observe(card
 
 /* ── Lightbox ─────────────────────────────────────────────────── */
 const lbImages = [
-  'certificates and education/1750366032516.jpeg',
-  'certificates and education/1750364248926.jpeg',
-  'certificates and education/1750364905420.jpeg',
-  'certificates and education/1750365297548.jpeg',
-  'certificates and education/1750365383427.jpeg',
-  'certificates and education/1750365587114.jpeg',
-  'certificates and education/1750364440890.jpeg',
-  'certificates and education/1780632422162.png',
+  'certificates%20and%20education/1750366032516.jpeg',
+  'certificates%20and%20education/1750364248926.jpeg',
+  'certificates%20and%20education/1750364905420.jpeg',
+  'certificates%20and%20education/1750365297548.jpeg',
+  'certificates%20and%20education/1750365383427.jpeg',
+  'certificates%20and%20education/1750365587114.jpeg',
+  'certificates%20and%20education/1750364440890.jpeg',
+  'certificates%20and%20education/1780632422162.png',
 ];
 let lbIdx = 0;
-function openLb(idx) {
-  lbIdx = idx;
+
+function lbShow(idx) {
+  lbIdx = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
   document.getElementById('lightbox-img').src = lbImages[lbIdx];
-  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' \u2013 ' + lbImages.length;
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function closeLb() {
+function lbHide() {
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
-function lbStep(dir) {
-  lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
-  document.getElementById('lightbox-img').src = lbImages[lbIdx];
-  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
-}
-document.addEventListener('click', e => {
-  if (e.target === document.getElementById('lightbox')) closeLb();
+
+/* Single delegated click handler — handles open, close, and navigation */
+document.addEventListener('click', function(e) {
+  /* Open: any element with data-lb="N" */
+  const opener = e.target.closest('[data-lb]');
+  if (opener) { lbShow(parseInt(opener.dataset.lb, 10)); return; }
+
+  /* Close: backdrop click or close button */
+  if (e.target.closest('[data-lb-close]') || e.target.id === 'lightbox') { lbHide(); return; }
+
+  /* Navigate: prev/next buttons */
+  const stepper = e.target.closest('[data-lb-step]');
+  if (stepper) { lbShow(lbIdx + parseInt(stepper.dataset.lbStep, 10)); return; }
 });
-document.addEventListener('keydown', e => {
+
+document.addEventListener('keydown', function(e) {
   const lb = document.getElementById('lightbox');
   if (!lb || !lb.classList.contains('open')) return;
-  if (e.key === 'Escape') closeLb();
-  if (e.key === 'ArrowRight') lbStep(1);
-  if (e.key === 'ArrowLeft') lbStep(-1);
+  if (e.key === 'Escape')      { lbHide(); }
+  if (e.key === 'ArrowRight')  { lbShow(lbIdx + 1); }
+  if (e.key === 'ArrowLeft')   { lbShow(lbIdx - 1); }
 });
 
 /* ── Language bars ────────────────────────────────────────────── */
@@ -2100,12 +2108,12 @@ syncThemeBtn(); // init button state on load
 </script>
 <!-- ── LIGHTBOX OVERLAY ───────────────────────────────────────────────── -->
 <div id="lightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
-  <button class="lb-close" onclick="closeLb()" aria-label="Close">&#x2715;</button>
-  <button class="lb-nav lb-prev" onclick="lbStep(-1)" aria-label="Previous">
+  <button class="lb-close" data-lb-close aria-label="Close">&#x2715;</button>
+  <button class="lb-nav lb-prev" data-lb-step="-1" aria-label="Previous">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
   </button>
   <img id="lightbox-img" src="" alt="Certificate">
-  <button class="lb-nav lb-next" onclick="lbStep(1)" aria-label="Next">
+  <button class="lb-nav lb-next" data-lb-step="1" aria-label="Next">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
   </button>
   <div class="lb-counter" id="lb-counter"></div>
