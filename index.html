@@ -2014,28 +2014,28 @@ const lbImages = [
   'certificates and education/1780632422162.png',
 ];
 let lbIdx = 0;
-const lbEl = document.getElementById('lightbox');
-const lbImgEl = document.getElementById('lightbox-img');
-const lbCtr = document.getElementById('lb-counter');
 function openLb(idx) {
   lbIdx = idx;
-  lbImgEl.src = lbImages[lbIdx];
-  lbCtr.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
-  lbEl.classList.add('open');
+  document.getElementById('lightbox-img').src = lbImages[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+  document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 function closeLb() {
-  lbEl.classList.remove('open');
+  document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
 }
 function lbStep(dir) {
   lbIdx = (lbIdx + dir + lbImages.length) % lbImages.length;
-  lbImgEl.src = lbImages[lbIdx];
-  lbCtr.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+  document.getElementById('lightbox-img').src = lbImages[lbIdx];
+  document.getElementById('lb-counter').textContent = (lbIdx + 1) + ' / ' + lbImages.length;
 }
-lbEl.addEventListener('click', e => { if (e.target === lbEl) closeLb(); });
+document.addEventListener('click', e => {
+  if (e.target === document.getElementById('lightbox')) closeLb();
+});
 document.addEventListener('keydown', e => {
-  if (!lbEl.classList.contains('open')) return;
+  const lb = document.getElementById('lightbox');
+  if (!lb || !lb.classList.contains('open')) return;
   if (e.key === 'Escape') closeLb();
   if (e.key === 'ArrowRight') lbStep(1);
   if (e.key === 'ArrowLeft') lbStep(-1);
