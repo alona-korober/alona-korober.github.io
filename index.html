@@ -625,66 +625,87 @@
       max-width: 480px;
     }
 
-    /* ── SELECTED IMPACT ──────────────────────────────────────────────── */
-    #selected-impact { padding: 100px 0; background: var(--bg); }
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 52px;
+    /* ── IMPACT BENTO ──────────────────────────────────────────────────── */
+    #impact { padding: 100px 0; background: var(--bg); }
+    .impact-intro {
+      font-size: 16px;
+      color: var(--text-2);
+      line-height: 1.75;
+      max-width: 620px;
+      margin: -24px 0 52px;
     }
-    .case-card {
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .bento-card {
       background: var(--bg-2);
       border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px 28px;
+      border-radius: 16px;
+      padding: 36px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .65s ease, transform .65s ease, border-color .2s, box-shadow .22s;
+    }
+    .bento-card.in { opacity: 1; transform: none; }
+    .bento-card:hover { border-color: var(--border-g); box-shadow: 0 8px 32px rgba(0,0,0,.06); }
+    .bento-card.span2 { grid-column: span 2; }
+
+    /* Wide card: number left, content right */
+    .bento-card.span2 .bento-body {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 44px;
+      align-items: start;
+    }
+    .bento-card.span2 .bento-right {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      transition: border-color .2s, transform .22s;
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.6s ease, transform 0.6s ease, border-color .2s;
     }
-    .case-card.in { opacity: 1; transform: none; }
-    .case-card:hover { border-color: var(--border-g); transform: translateY(-3px); }
-    .case-idx {
+    .bento-num {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+      font-size: clamp(60px, 7.5vw, 108px);
+      font-weight: 700;
       color: var(--gold);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      white-space: nowrap;
     }
-    .case-title {
+    .bento-label {
       font-family: 'Cormorant Garamond', Georgia, serif;
-      font-size: clamp(19px, 2vw, 24px);
+      font-size: clamp(19px, 1.9vw, 23px);
       font-weight: 600;
       color: var(--text);
-      line-height: 1.25;
+      line-height: 1.2;
     }
-    .case-desc {
-      font-size: 14px;
+    .bento-desc {
+      font-size: 13.5px;
       color: var(--text-2);
-      line-height: 1.65;
+      line-height: 1.68;
       flex: 1;
     }
-    .case-metrics {
+    .bento-pills {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      padding-top: 8px;
+      gap: 6px;
+      padding-top: 12px;
       border-top: 1px solid var(--border);
+      margin-top: auto;
     }
-    .case-metric {
+    .bento-pill {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       color: var(--gold);
       background: var(--gold-bg);
       border: 1px solid var(--gold-dim);
       border-radius: 100px;
-      padding: 4px 12px;
+      padding: 3px 10px;
     }
 
     /* ── WHAT I DO / HOW I WORK ───────────────────────────────────────── */
@@ -982,7 +1003,9 @@
       .cred-wrap { grid-template-columns: 1fr; gap: 52px; }
       .ref-grid { grid-template-columns: 1fr; }
       .vol-grid { grid-template-columns: 1fr; }
-      .case-grid { grid-template-columns: 1fr; }
+      .bento-grid { grid-template-columns: repeat(2, 1fr); }
+      .bento-card.span2 { grid-column: span 2; }
+      .bento-card.span2 .bento-body { grid-template-columns: 1fr; gap: 16px; }
       .what-pillars { grid-template-columns: 1fr; gap: 12px; }
       .how-grid { grid-template-columns: 1fr; }
       .about-wrap { grid-template-columns: 1fr; gap: 40px; }
@@ -996,9 +1019,10 @@
       /* ── General ── */
       .w { padding: 0 20px; }
       .nav-links { display: none; }
-      .impact-grid { grid-template-columns: 1fr; }
-      .impact-card { padding: 28px 20px; }
-      .impact-num { font-size: 48px; }
+      .bento-grid { grid-template-columns: 1fr; }
+      .bento-card.span2 { grid-column: span 1; }
+      .bento-card.span2 .bento-body { grid-template-columns: 1fr; gap: 12px; }
+      .bento-num { font-size: 64px; }
       section, #skills, #experience, #credentials, #selected-impact,
       #about, #volunteer, #references, #languages, #cert-gallery { padding: 60px 0; }
       .case-grid { margin-top: 32px; }
@@ -1088,7 +1112,7 @@
     <div class="nav-row">
       <span class="nav-logo">Alona Korober</span>
       <div class="nav-links">
-        <a href="#selected-impact">Impact</a>
+        <a href="#impact">Impact</a>
         <a href="#skills">What I Do</a>
         <a href="#experience">Experience</a>
         <a href="#about">About</a>
@@ -1164,126 +1188,93 @@
 <!-- ── IMPACT ───────────────────────────────────────────────────────── -->
 <section id="impact">
   <div class="w">
-    <p class="label reveal">02 — Measurable Results</p>
-    <h2 class="section-title reveal" data-delay="1">Impact by the Numbers</h2>
-    <div class="impact-grid">
+    <p class="label reveal">02 — Results</p>
+    <h2 class="section-title reveal" data-delay="1">Impact</h2>
+    <p class="impact-intro reveal" data-delay="2">Eight years scaling one organization from 50 to 370+ people. Here are the outcomes worth talking about.</p>
 
-      <div class="impact-card" data-delay="1">
-        <div class="impact-num" data-count="7" data-suffix="×">0</div>
-        <div class="impact-lbl">Headcount Growth</div>
-        <div class="impact-ctx">Built HR from the ground up — from 50 to 370 employees</div>
-      </div>
+    <div class="bento-grid">
 
-      <div class="impact-card" data-delay="2">
-        <div class="impact-num" data-static="10×">10×</div>
-        <div class="impact-lbl">Profitability Growth</div>
-        <div class="impact-ctx">Over full tenure through operational excellence</div>
-      </div>
-
-      <div class="impact-card" data-delay="3">
-        <div class="impact-num" data-static="~95%">~95%</div>
-        <div class="impact-lbl">Internal Manager Retention</div>
-        <div class="impact-ctx">Promote-from-within model; near-zero first-year management turnover</div>
-      </div>
-
-      <div class="impact-card" data-delay="4">
-        <div class="impact-num" data-count="97" data-suffix="%">0</div>
-        <div class="impact-lbl">Reduction in Lead Losses</div>
-        <div class="impact-ctx">Via a comprehensive security &amp; compliance program</div>
-      </div>
-
-      <div class="impact-card" data-delay="5">
-        <div class="impact-num" data-static="4×">4×</div>
-        <div class="impact-lbl">Higher 1-Year Employee Retention</div>
-        <div class="impact-ctx">Through structured training &amp; peer-based onboarding</div>
-      </div>
-
-      <div class="impact-card" data-delay="6">
-        <div class="impact-num" data-count="48" data-prefix="+" data-suffix="%">0</div>
-        <div class="impact-lbl">Headcount Growth During COVID</div>
-        <div class="impact-ctx">100% in-office operations maintained throughout lockdown</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── SELECTED IMPACT ───────────────────────────────────────────────── -->
-<section id="selected-impact">
-  <div class="w">
-    <p class="label reveal">03 — Case Studies</p>
-    <h2 class="section-title reveal" data-delay="1">Selected Impact</h2>
-    <div class="case-grid">
-
-      <div class="case-card reveal">
-        <div class="case-idx">01 — Scaling the Organization</div>
-        <div class="case-title">Building an Operating Structure for 7× Growth</div>
-        <div class="case-desc">Helped scale the business from 50 to 370+ employees while building the operating structure, functions, and management systems needed to support growth. Built 8+ major functions from scratch — HR, QA, IT, Facilities, Office Management — and expanded the sales structure to ~14 teams.</div>
-        <div class="case-metrics">
-          <span class="case-metric">50 → 370+ employees</span>
-          <span class="case-metric">10×+ profit growth</span>
-          <span class="case-metric">8+ functions built</span>
+      <!-- Card A — wide: Organizational Scale -->
+      <div class="bento-card span2" data-bento>
+        <div class="bento-body">
+          <div class="bento-num" data-count="7" data-suffix="×">0</div>
+          <div class="bento-right">
+            <div class="bento-label">Organizational Scale</div>
+            <div class="bento-desc">Built the operating structure, functions, and management systems needed to grow from 50 to 370+ employees — including HR, QA, IT, Facilities, Office Management, and a sales structure of ~14 teams. Revenue grew ~7× and profit 10×+ over the same period.</div>
+            <div class="bento-pills">
+              <span class="bento-pill">50 → 370+ employees</span>
+              <span class="bento-pill">~7× revenue growth</span>
+              <span class="bento-pill">8+ functions built</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="case-card reveal" data-delay="1">
-        <div class="case-idx">02 — In-House Growth Engine</div>
-        <div class="case-title">Building an Internal Lead-Generation Function</div>
-        <div class="case-desc">Built an internal lead-generation function as an alternative to purchased leads, connecting sales, media, technical support, and analytics into one operating model. Internally generated leads converted at 60–75% vs. 3–6% for purchased leads.</div>
-        <div class="case-metrics">
-          <span class="case-metric">60–75% conversion vs. 3–6%</span>
-          <span class="case-metric">40–70% higher revenue/lead</span>
+      <!-- Card B: Profit -->
+      <div class="bento-card" data-bento>
+        <div class="bento-num" data-static="10×">10×</div>
+        <div class="bento-label">Profit Growth</div>
+        <div class="bento-desc">Achieved over the full tenure through operational, commercial, and structural improvements across the business.</div>
+        <div class="bento-pills">
+          <span class="bento-pill">Over full 8-year tenure</span>
         </div>
       </div>
 
-      <div class="case-card reveal">
-        <div class="case-idx">03 — Training into Performance</div>
-        <div class="case-title">Connecting Onboarding, QA, and Coaching into a Continuous Loop</div>
-        <div class="case-desc">Built a training and QA system that connected onboarding, call analysis, coaching, manager follow-up, and performance feedback into one continuous improvement process. Employees who completed structured training showed 4× higher 1-year retention and 2–4× higher sales efficiency.</div>
-        <div class="case-metrics">
-          <span class="case-metric">2–4× sales efficiency/lead</span>
-          <span class="case-metric">4× higher 1-year retention</span>
+      <!-- Card C: Lead Conversion -->
+      <div class="bento-card" data-bento>
+        <div class="bento-num" data-static="60–75%">60–75%</div>
+        <div class="bento-label">Lead Conversion Rate</div>
+        <div class="bento-desc">Built an internal lead-generation engine connecting sales, media, tech support, and analytics. Internally generated leads converted at 60–75% — vs. 3–6% for purchased leads.</div>
+        <div class="bento-pills">
+          <span class="bento-pill">vs. 3–6% purchased</span>
+          <span class="bento-pill">40–70% higher revenue/lead</span>
         </div>
       </div>
 
-      <div class="case-card reveal" data-delay="1">
-        <div class="case-idx">04 — COVID Operations</div>
-        <div class="case-title">Restoring an Office-Based Business in ~2 Days</div>
-        <div class="case-desc">When transportation restrictions disrupted an office-based business, redesigned employee logistics and restored full in-office operations in approximately 2 days. The company continued hiring and grew from 250 to 370 employees during the period — a 48% workforce increase.</div>
-        <div class="case-metrics">
-          <span class="case-metric">~2 days to restore ops</span>
-          <span class="case-metric">+48% workforce growth</span>
+      <!-- Card D: Retention -->
+      <div class="bento-card" data-bento>
+        <div class="bento-num" data-static="4×">4×</div>
+        <div class="bento-label">Employee Retention</div>
+        <div class="bento-desc">Among employees who completed structured training — onboarding, call QA, coaching, and feedback wired into one continuous improvement loop.</div>
+        <div class="bento-pills">
+          <span class="bento-pill">2–4× sales efficiency</span>
         </div>
       </div>
 
-      <div class="case-card reveal">
-        <div class="case-idx">05 — Security &amp; Data Integrity</div>
-        <div class="case-title">97% Reduction in Lead Losses via CRM &amp; Process Rebuild</div>
-        <div class="case-desc">Redesigned CRM workflows, access controls, and internal security processes to reduce revenue leakage and create clearer accountability around sensitive business data. Lead loss rate dropped from approximately 15% to 0.5%.</div>
-        <div class="case-metrics">
-          <span class="case-metric">~97% reduction in lead losses</span>
-          <span class="case-metric">15% → 0.5% loss rate</span>
+      <!-- Card E: COVID -->
+      <div class="bento-card" data-bento>
+        <div class="bento-num" data-static="~2">~2</div>
+        <div class="bento-label">Days to Restore Operations</div>
+        <div class="bento-desc">When COVID transport restrictions disrupted 250+ employees, redesigned logistics and restored full in-office operations in ~2 days — then grew the team 48% during that same period.</div>
+        <div class="bento-pills">
+          <span class="bento-pill">+48% workforce during COVID</span>
+          <span class="bento-pill">100% in-office maintained</span>
         </div>
       </div>
 
-      <div class="case-card reveal" data-delay="1">
-        <div class="case-idx">06 — Office Launch</div>
-        <div class="case-title">Launching a 250-Person Office in ~3 Months</div>
-        <div class="case-desc">Led the end-to-end launch of a new office from site selection and contracting through layout, renovation, infrastructure, equipment, and opening. Full responsibility from first walkthrough to day-one operations for a 220–250-person capacity facility.</div>
-        <div class="case-metrics">
-          <span class="case-metric">220–250-person capacity</span>
-          <span class="case-metric">~3 months start to launch</span>
+      <!-- Card F: Lead Losses -->
+      <div class="bento-card" data-bento>
+        <div class="bento-num" data-count="97" data-suffix="%">0</div>
+        <div class="bento-label">Reduction in Lead Losses</div>
+        <div class="bento-desc">Rebuilt CRM access controls, workflows, and data accountability from the ground up. Lead loss rate dropped from 15% to 0.5%.</div>
+        <div class="bento-pills">
+          <span class="bento-pill">15% → 0.5% loss rate</span>
         </div>
       </div>
 
-      <div class="case-card reveal">
-        <div class="case-idx">07 — Culture &amp; Continuity</div>
-        <div class="case-title">Building a Culture That Outlasted Leadership Transitions</div>
-        <div class="case-desc">Built management routines, internal career paths, and ways of working that strengthened trust and responsibility across teams. The culture continued through rapid growth, COVID, war, the loss of the owner, and eventually a planned departure — with virtually all management roles filled internally.</div>
-        <div class="case-metrics">
-          <span class="case-metric">~95% manager retention</span>
-          <span class="case-metric">All roles filled internally</span>
-          <span class="case-metric">~3 months autonomous ops</span>
+      <!-- Card G — wide: Culture & Continuity -->
+      <div class="bento-card span2" data-bento>
+        <div class="bento-body">
+          <div class="bento-num" data-static="~95%">~95%</div>
+          <div class="bento-right">
+            <div class="bento-label">Manager Retention</div>
+            <div class="bento-desc">Internally developed managers — virtually all management roles filled from within. Built routines, career paths, and a culture of accountability that survived rapid growth, COVID, wartime disruption, the loss of the company's owner, and eventually a structured transition when I relocated to the U.S. The organization ran stably for ~3 months without regular executive presence.</div>
+            <div class="bento-pills">
+              <span class="bento-pill">All roles filled internally</span>
+              <span class="bento-pill">~3 months autonomous ops</span>
+              <span class="bento-pill">Near-zero first-year management turnover</span>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1294,7 +1285,7 @@
 <!-- ── SKILLS ────────────────────────────────────────────────────────── -->
 <section id="skills">
   <div class="w">
-    <p class="label reveal">04 — Approach &amp; Capabilities</p>
+    <p class="label reveal">03 — Approach &amp; Capabilities</p>
     <h2 class="section-title reveal" data-delay="1">What I Do</h2>
 
     <div class="what-pillars">
@@ -1406,7 +1397,7 @@
 <!-- ── EXPERIENCE ─────────────────────────────────────────────────────── -->
 <section id="experience">
   <div class="w">
-    <p class="label reveal">05 — Professional History</p>
+    <p class="label reveal">04 — Professional History</p>
     <h2 class="section-title reveal" data-delay="1">Experience</h2>
 
     <div class="timeline">
@@ -1559,7 +1550,7 @@
 <!-- ── ABOUT ─────────────────────────────────────────────────────────── -->
 <section id="about">
   <div class="w">
-    <p class="label reveal">06 — Beyond the Resume</p>
+    <p class="label reveal">05 — Beyond the Resume</p>
     <h2 class="section-title reveal" data-delay="1">About</h2>
     <div class="about-wrap">
 
@@ -1604,7 +1595,7 @@
 <!-- ── CREDENTIALS ────────────────────────────────────────────────────── -->
 <section id="credentials">
   <div class="w">
-    <p class="label reveal">07 — Academic &amp; Professional</p>
+    <p class="label reveal">06 — Academic &amp; Professional</p>
     <h2 class="section-title reveal" data-delay="1">Education &amp; Certifications</h2>
 
     <div class="cred-wrap">
@@ -1721,7 +1712,7 @@
 <!-- ── CERT GALLERY ───────────────────────────────────────────────────── -->
 <section id="cert-gallery">
   <div class="w">
-    <p class="label reveal">08 — Verified Credentials</p>
+    <p class="label reveal">07 — Verified Credentials</p>
     <h2 class="section-title reveal" data-delay="1">Certificate Gallery</h2>
     <div class="cert-gallery-grid">
 
@@ -1829,7 +1820,7 @@
 <!-- ── VOLUNTEER ───────────────────────────────────────────────────────── -->
 <section id="volunteer">
   <div class="w">
-    <p class="label reveal">09 — Giving Back</p>
+    <p class="label reveal">08 — Giving Back</p>
     <h2 class="section-title reveal" data-delay="1">Community &amp; Impact</h2>
     <div class="vol-grid">
       <div class="vol-card reveal">
@@ -1863,7 +1854,7 @@
 <!-- ── REFERENCES ─────────────────────────────────────────────────────── -->
 <section id="references">
   <div class="w">
-    <p class="label reveal">10 — Testimonials</p>
+    <p class="label reveal">09 — Testimonials</p>
     <h2 class="section-title reveal" data-delay="1">References</h2>
     <div class="ref-grid">
       <div class="ref-card reveal">
@@ -1969,38 +1960,24 @@ const statsObs = new IntersectionObserver((entries) => {
 }, { threshold: 0.4 });
 const statsEl = document.getElementById('stats');
 if (statsEl) statsObs.observe(statsEl);
-const impactEl = document.getElementById('impact');
-if (impactEl) statsObs.observe(impactEl);
 
-/* ── Impact cards: observe each individually for one-at-a-time cascade ── */
-const cardDelays = [0, 0.12, 0.24, 0, 0.12, 0.24]; // row-based stagger
-const impactCardObs = new IntersectionObserver((entries) => {
+/* ── Bento cards: staggered entrance + count-up ───────────────── */
+const bentoDelays = [0, 0, 0.10, 0.20, 0.30, 0.10, 0]; // per card index
+let bentoIdx = 0;
+const bentoObs = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if (!e.isIntersecting) return;
     const card = e.target;
-    const delay = parseFloat(card.dataset.delay || 0);
-    // stagger within each row (positions 1,2,3 → 4,5,6)
-    const rowDelay = cardDelays[(+card.dataset.delay - 1) % 3] || 0;
-    card.style.transitionDelay = rowDelay + 's';
+    const delay = bentoDelays[bentoIdx++ % bentoDelays.length] || 0;
+    card.style.transitionDelay = delay + 's';
     card.classList.add('in');
-    // trigger count-up for this card
     card.querySelectorAll('[data-count]').forEach(el => {
-      setTimeout(() => countUp(el, +el.dataset.count, el.dataset.prefix || '', el.dataset.suffix || '', 1400), rowDelay * 1000);
+      setTimeout(() => countUp(el, +el.dataset.count, el.dataset.prefix || '', el.dataset.suffix || '', 1600), delay * 1000);
     });
-    impactCardObs.unobserve(card);
+    bentoObs.unobserve(card);
   });
-}, { threshold: 0.35, rootMargin: '0px 0px -60px 0px' });
-document.querySelectorAll('.impact-card').forEach(card => impactCardObs.observe(card));
-
-/* ── Case card scroll-in ──────────────────────────────────────── */
-const caseCardObs = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    e.target.classList.add('in');
-    caseCardObs.unobserve(e.target);
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.case-card').forEach(card => caseCardObs.observe(card));
+}, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('[data-bento]').forEach(card => bentoObs.observe(card));
 
 /* ── Lightbox ─────────────────────────────────────────────────── */
 const lbImages = [
