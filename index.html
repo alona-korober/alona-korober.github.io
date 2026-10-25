@@ -61,7 +61,7 @@
 
     /* smooth theme transition */
     body, nav, footer, section, .card, .ref-card, .vol-card,
-    .tl-role, .cert-row, .stat-box, .tab, .pill,
+    .tl-role, .cert-row, .stat-box, .skills-pill,
     .hero-contact a, .ft-links a {
       transition: background-color .35s ease, border-color .35s ease, color .35s ease;
     }
@@ -394,34 +394,49 @@
     /* ── SKILLS ──────────────────────────────────────────────────────── */
     #skills { padding: 100px 0; background: var(--bg-2); }
 
-    .tab-bar {
-      display: flex; gap: 0; border-bottom: 1px solid var(--border);
-      margin-bottom: 32px; flex-wrap: wrap;
+    /* ── Core Competencies grid ─────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 24px;
     }
-    .tab {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 12px; font-weight: 600;
-      padding: 9px 18px 11px; background: none; border: none;
-      cursor: pointer; color: var(--text-2); letter-spacing: .02em;
-      border-bottom: 2px solid transparent; margin-bottom: -1px;
-      transition: color .2s, border-color .2s;
-    }
-    .tab:hover { color: var(--text); }
-    .tab.on { color: var(--gold); border-bottom-color: var(--gold); }
-
-    .tab-panel { display: none; flex-wrap: wrap; gap: 8px; }
-    .tab-panel.on { display: flex; animation: fadeUp .3s ease both; }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
-
-    .pill {
-      padding: 6px 14px; border-radius: 100px;
+    .skills-cat {
       border: 1px solid var(--border);
-      font-size: 12.5px; color: var(--text-2);
-      background: var(--bg-3); cursor: default;
-      transition: all .2s;
+      border-top: 2.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 22px 20px 20px;
+      background: var(--bg);
+      transition: box-shadow .25s ease, border-color .25s ease;
     }
-    .pill:hover {
-      border-color: var(--border-g); color: var(--text);
+    .skills-cat:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border-color: var(--border-g);
+      border-top-color: var(--gold);
+    }
+    .skills-cat-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 10.5px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .skills-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+    .skills-pill {
+      font-size: 12.5px;
+      color: var(--text-2);
+      background: var(--bg-3);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 4px 10px;
+      line-height: 1.5;
+      transition: border-color .15s, color .15s, background .15s;
+    }
+    .skills-pill:hover {
+      border-color: var(--border-g);
+      color: var(--text);
       background: var(--gold-bg);
     }
 
@@ -1033,6 +1048,7 @@
       .about-photo-col { position: static; }
       .about-photo { max-width: 380px; }
       .cert-gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
       /* On tablet: keep photo at 52% so S-curve stays at the photo edge */
       .hero-inner { max-width: min(560px, 46vw); }
     }
@@ -1041,6 +1057,7 @@
       .w { padding: 0 20px; }
       .nav-links { display: none; }
       .bento-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
       .bento-card.span2 { grid-column: span 1; }
       .bento-card.span2 .bento-body { grid-template-columns: 1fr; gap: 12px; }
       .bento-num { font-size: 64px; }
@@ -1340,73 +1357,91 @@
     </div>
 
     <p class="label reveal" style="margin-top:60px;margin-bottom:28px">Core Competencies</p>
-    <div class="tab-bar reveal" data-delay="2">
-      <button class="tab on" data-tab="leadership">Core Leadership</button>
-      <button class="tab" data-tab="hr">HR &amp; People</button>
-      <button class="tab" data-tab="finance">Finance</button>
-      <button class="tab" data-tab="sales">Sales &amp; Biz Dev</button>
-      <button class="tab" data-tab="tech">Technology</button>
-      <button class="tab" data-tab="comms">Communication</button>
-    </div>
+    <div class="skills-grid reveal" data-delay="2">
 
-    <div id="tab-leadership" class="tab-panel on">
-      <span class="pill">Executive Leadership</span>
-      <span class="pill">Strategic Planning</span>
-      <span class="pill">General Management</span>
-      <span class="pill">Project Management</span>
-      <span class="pill">Risk Management</span>
-      <span class="pill">Business Process Reengineering</span>
-      <span class="pill">Cross-functional Coordination</span>
-      <span class="pill">Personnel Development & Coaching</span>
-      <span class="pill">Conflict Resolution</span>
-    </div>
-    <div id="tab-hr" class="tab-panel">
-      <span class="pill">HR Systems Design</span>
-      <span class="pill">Recruitment Strategy & Onboarding</span>
-      <span class="pill">Compensation & Benefits</span>
-      <span class="pill">Performance Management</span>
-      <span class="pill">Employee Training & Development</span>
-      <span class="pill">Coaching & Emotional Leadership</span>
-      <span class="pill">Team Building & Motivation</span>
-      <span class="pill">Culture Building</span>
-      <span class="pill">Organizational Design</span>
-    </div>
-    <div id="tab-finance" class="tab-panel">
-      <span class="pill">P&amp;L Management</span>
-      <span class="pill">Budget Forecasting</span>
-      <span class="pill">Payroll Accounting</span>
-      <span class="pill">Financial Analysis</span>
-      <span class="pill">Cost Optimization</span>
-      <span class="pill">Compensation Strategy</span>
-      <span class="pill">Revenue Growth</span>
-    </div>
-    <div id="tab-sales" class="tab-panel">
-      <span class="pill">B2B / B2C / B2G Sales</span>
-      <span class="pill">Tender Preparation & Negotiation</span>
-      <span class="pill">Client Relationship Management</span>
-      <span class="pill">Marketing Strategy & Branding</span>
-      <span class="pill">Event Organization & Management</span>
-      <span class="pill">Online & Offline Campaigns</span>
-      <span class="pill">Client Attraction</span>
-    </div>
-    <div id="tab-tech" class="tab-panel">
-      <span class="pill">CRM Implementation & Optimization</span>
-      <span class="pill">AI Tools & Automation</span>
-      <span class="pill">Content Generation with AI</span>
-      <span class="pill">Google Analytics</span>
-      <span class="pill">Microsoft Office 365</span>
-      <span class="pill">Google Workspace</span>
-      <span class="pill">IT Infrastructure</span>
-      <span class="pill">Data Security & DDoS Protection</span>
-    </div>
-    <div id="tab-comms" class="tab-panel">
-      <span class="pill">Public Speaking & Facilitation</span>
-      <span class="pill">Copywriting & Article Writing</span>
-      <span class="pill">English — Fluent</span>
-      <span class="pill">Ukrainian — Native</span>
-      <span class="pill">Russian — Native</span>
-      <span class="pill">Polish — Basic</span>
-      <span class="pill">Cross-cultural Communication</span>
+      <div class="skills-cat">
+        <div class="skills-cat-name">Core Leadership</div>
+        <div class="skills-pills">
+          <span class="skills-pill">Executive Leadership</span>
+          <span class="skills-pill">Strategic Planning</span>
+          <span class="skills-pill">General Management</span>
+          <span class="skills-pill">Project Management</span>
+          <span class="skills-pill">Risk Management</span>
+          <span class="skills-pill">Business Process Reengineering</span>
+          <span class="skills-pill">Cross-functional Coordination</span>
+          <span class="skills-pill">Personnel Development &amp; Coaching</span>
+          <span class="skills-pill">Conflict Resolution</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">HR &amp; People</div>
+        <div class="skills-pills">
+          <span class="skills-pill">HR Systems Design</span>
+          <span class="skills-pill">Recruitment &amp; Onboarding</span>
+          <span class="skills-pill">Compensation &amp; Benefits</span>
+          <span class="skills-pill">Performance Management</span>
+          <span class="skills-pill">Employee Training &amp; Development</span>
+          <span class="skills-pill">Coaching &amp; Emotional Leadership</span>
+          <span class="skills-pill">Team Building &amp; Motivation</span>
+          <span class="skills-pill">Culture Building</span>
+          <span class="skills-pill">Organizational Design</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Finance</div>
+        <div class="skills-pills">
+          <span class="skills-pill">P&amp;L Management</span>
+          <span class="skills-pill">Budget Forecasting</span>
+          <span class="skills-pill">Payroll Accounting</span>
+          <span class="skills-pill">Financial Analysis</span>
+          <span class="skills-pill">Cost Optimization</span>
+          <span class="skills-pill">Compensation Strategy</span>
+          <span class="skills-pill">Revenue Growth</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Sales &amp; Biz Dev</div>
+        <div class="skills-pills">
+          <span class="skills-pill">B2B / B2C / B2G Sales</span>
+          <span class="skills-pill">Tender Preparation &amp; Negotiation</span>
+          <span class="skills-pill">Client Relationship Management</span>
+          <span class="skills-pill">Marketing Strategy &amp; Branding</span>
+          <span class="skills-pill">Event Organization &amp; Management</span>
+          <span class="skills-pill">Online &amp; Offline Campaigns</span>
+          <span class="skills-pill">Client Attraction</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Technology</div>
+        <div class="skills-pills">
+          <span class="skills-pill">CRM Implementation &amp; Optimization</span>
+          <span class="skills-pill">AI Tools &amp; Automation</span>
+          <span class="skills-pill">Content Generation with AI</span>
+          <span class="skills-pill">Google Analytics</span>
+          <span class="skills-pill">Microsoft Office 365</span>
+          <span class="skills-pill">Google Workspace</span>
+          <span class="skills-pill">IT Infrastructure</span>
+          <span class="skills-pill">Data Security &amp; DDoS Protection</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Communication</div>
+        <div class="skills-pills">
+          <span class="skills-pill">Public Speaking &amp; Facilitation</span>
+          <span class="skills-pill">Copywriting &amp; Article Writing</span>
+          <span class="skills-pill">English — Fluent</span>
+          <span class="skills-pill">Ukrainian — Native</span>
+          <span class="skills-pill">Russian — Native</span>
+          <span class="skills-pill">Polish — Basic</span>
+          <span class="skills-pill">Cross-cultural Communication</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -2058,15 +2093,6 @@ const langObs = new IntersectionObserver((entries) => {
 const langRow = document.getElementById('lang-row');
 if (langRow) langObs.observe(langRow);
 
-/* ── Skill tabs ───────────────────────────────────────────────── */
-document.querySelectorAll('.tab').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('on'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('on'));
-    btn.classList.add('on');
-    document.getElementById('tab-' + btn.dataset.tab)?.classList.add('on');
-  });
-});
 
 /* ── Role accordions ──────────────────────────────────────────── */
 function toggleRole(header) {
