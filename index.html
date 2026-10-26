@@ -45,13 +45,13 @@
       --bg-2:         #0c150e;
       --bg-3:         #111d13;
       --border:       rgba(255,255,255,0.08);
-      --border-g:     rgba(56,220,110,0.28);
-      --text:         #e6f5ea;
-      --text-2:       #7da887;
+      --border-g:     rgba(74,171,106,0.20);
+      --text:         #dff0e4;
+      --text-2:       #7a9e82;
       --text-3:       #3e5e47;
-      --gold:         #38dc6e;
-      --gold-bg:      rgba(56,220,110,0.07);
-      --gold-dim:     rgba(56,220,110,0.15);
+      --gold:         #4aab6a;
+      --gold-bg:      rgba(74,171,106,0.08);
+      --gold-dim:     rgba(74,171,106,0.14);
       --bg-rgb:       7,14,9;
       --nav-bg:       rgba(7,14,9,.92);
       --photo-vignette: rgba(7,14,9,.18);
@@ -683,6 +683,8 @@
       letter-spacing: -0.04em;
       white-space: nowrap;
     }
+    /* In dark mode, giant numbers are too overpowering at full green — slightly mute them */
+    [data-theme="dark"] .bento-num { opacity: 0.82; }
     .bento-label {
       font-family: 'Cormorant Garamond', Georgia, serif;
       font-size: clamp(19px, 1.9vw, 23px);
