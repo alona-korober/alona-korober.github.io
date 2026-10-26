@@ -968,24 +968,31 @@
       overflow: hidden;
     }
     .about-interest-card:hover { border-color: var(--border-g); }
-    /* Cards with a photo header */
-    .about-interest-card.has-photo { padding: 0; }
+    /* Cards with a photo — horizontal layout */
+    .about-interest-card.has-photo {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+    }
     .about-interest-photo {
-      width: 100%; height: 140px;
+      width: 36%;
+      flex-shrink: 0;
       object-fit: cover;
       display: block;
-      border-radius: 0;
-      filter: saturate(0.88) brightness(0.97);
-      transition: filter .35s ease, transform .35s ease;
+      filter: saturate(0.85) brightness(0.95);
+      transition: filter .4s ease, transform .4s ease;
     }
     .about-interest-card.has-photo:hover .about-interest-photo {
-      filter: saturate(1) brightness(1);
-      transform: scale(1.02);
+      filter: saturate(1.05) brightness(1);
+      transform: scale(1.03);
     }
-    .about-interest-card.has-photo .about-interest-title,
-    .about-interest-card.has-photo .about-interest-desc { padding: 0 20px; }
-    .about-interest-card.has-photo .about-interest-title { margin-top: 14px; }
-    .about-interest-card.has-photo .about-interest-desc { padding-bottom: 18px; }
+    .about-interest-content {
+      padding: 18px 18px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
     .about-interest-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 13px;
@@ -1626,14 +1633,18 @@
         <div class="about-interests reveal" data-delay="2">
           <div class="about-interests-label">Outside the office</div>
           <div class="about-interest-card has-photo">
-            <img class="about-interest-photo" src="hobbies/mountain.jpg" alt="Mountain ascent" loading="lazy" />
-            <div class="about-interest-title">Mountains &amp; Caves</div>
-            <div class="about-interest-desc">Long ascents, high altitude, changing conditions. Mountains teach adaptation, discomfort, and the difference between temporary difficulty and a real limit. On serious ascents — especially as a rope team — people are genuinely responsible for one another. Caving challenges me differently: technical preparation, emotional control, and decision-making under pressure in confined spaces.</div>
+            <img class="about-interest-photo" src="hobbies/mountain.jpg" alt="Mountain ascent" loading="lazy" style="object-position: 22% center;" />
+            <div class="about-interest-content">
+              <div class="about-interest-title">Mountains &amp; Caves</div>
+              <div class="about-interest-desc">Long ascents, high altitude, changing conditions. Mountains teach adaptation, discomfort, and the difference between temporary difficulty and a real limit. On serious ascents — especially as a rope team — people are genuinely responsible for one another. Caving challenges me differently: technical preparation, emotional control, and decision-making under pressure in confined spaces.</div>
+            </div>
           </div>
           <div class="about-interest-card has-photo">
-            <img class="about-interest-photo" src="hobbies/travel.jpg" alt="Jet skiing in Dubai" loading="lazy" />
-            <div class="about-interest-title">Curiosity, Making &amp; Culture</div>
-            <div class="about-interest-desc">My first degree was in Fine Art and Design. I enjoy photography, drawing, sewing, building and repairing things, and working with plants. The same curiosity draws me to technology, engineering, and science. I love live theater — the combination of acting, writing, costume, music, and staging happening in real time. And when I travel, one of the first things I explore is the local food.</div>
+            <img class="about-interest-photo" src="hobbies/travel.jpg" alt="Jet skiing in Dubai" loading="lazy" style="object-position: 22% 70%;" />
+            <div class="about-interest-content">
+              <div class="about-interest-title">Curiosity, Making &amp; Culture</div>
+              <div class="about-interest-desc">My first degree was in Fine Art and Design. I enjoy photography, drawing, sewing, building and repairing things, and working with plants. The same curiosity draws me to technology, engineering, and science. I love live theater — the combination of acting, writing, costume, music, and staging happening in real time. And when I travel, one of the first things I explore is the local food.</div>
+            </div>
           </div>
           <div class="about-interest-card">
             <div class="about-interest-title">International Background</div>
