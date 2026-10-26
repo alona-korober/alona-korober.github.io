@@ -662,19 +662,68 @@
     }
     .bento-card.in { opacity: 1; transform: none; }
     .bento-card:hover { border-color: var(--border-g); box-shadow: 0 8px 32px rgba(0,0,0,.06); }
-    .bento-card.span2 { grid-column: span 2; }
 
-    /* Wide card: number left, content right */
-    .bento-card.span2 .bento-body {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 44px;
-      align-items: start;
-    }
-    .bento-card.span2 .bento-right {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    /* ── Accordion override: hover-capable desktop only ──────────── */
+    @media (hover: hover) and (min-width: 900px) {
+      .bento-grid {
+        display: flex;
+        gap: 10px;
+        align-items: stretch;
+        height: 440px;
+      }
+      .bento-card {
+        flex: 1 1 0;
+        min-width: 0;
+        overflow: hidden;
+        padding: 28px 24px;
+        cursor: default;
+        transition: flex .48s cubic-bezier(0.4,0,0.2,1),
+                    opacity .65s ease, transform .65s ease,
+                    border-color .2s, box-shadow .22s;
+      }
+      /* Collapsed neighbours */
+      .bento-grid.has-active .bento-card:not(.active) {
+        flex: 0 0 72px;
+        min-width: 72px;
+        max-width: 72px;
+      }
+      .bento-grid.has-active .bento-card:not(.active) .bento-num {
+        font-size: 34px;
+        transition: font-size .35s ease;
+      }
+      .bento-grid.has-active .bento-card:not(.active) .bento-label { opacity: 0; }
+      /* Active (hovered) card */
+      .bento-card.active {
+        flex: 1 1 0;
+        min-width: 0;
+        border-color: var(--border-g);
+        box-shadow: 0 8px 32px rgba(0,0,0,.06);
+      }
+      /* Desc & pills hidden until active */
+      .bento-desc {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .22s ease;
+      }
+      .bento-pills {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity .2s ease;
+        margin-top: auto;
+        padding-top: 12px;
+      }
+      .bento-card.active .bento-desc {
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: .18s;
+      }
+      .bento-card.active .bento-pills {
+        opacity: 1;
+        pointer-events: auto;
+        transition-delay: .25s;
+      }
+      .bento-label { transition: opacity .2s ease; }
+      .bento-num { transition: font-size .35s ease, opacity .35s ease; }
     }
     .bento-num {
       font-family: 'Space Grotesk', sans-serif;
@@ -1234,19 +1283,15 @@
 
     <div class="bento-grid">
 
-      <!-- Card A — wide: Organizational Scale -->
-      <div class="bento-card span2" data-bento>
-        <div class="bento-body">
-          <div class="bento-num" data-count="7" data-suffix="×">0</div>
-          <div class="bento-right">
-            <div class="bento-label">Organizational Scale</div>
-            <div class="bento-desc">Built the operating structure, functions, and management systems needed to grow from 50 to 370+ employees — including HR, QA, IT, Facilities, Office Management, and a sales structure of ~14 teams. Revenue grew ~7× and profit 10×+ over the same period.</div>
-            <div class="bento-pills">
-              <span class="bento-pill">50 → 370+ employees</span>
-              <span class="bento-pill">~7× revenue growth</span>
-              <span class="bento-pill">8+ functions built</span>
-            </div>
-          </div>
+      <!-- Card A: Organizational Scale -->
+      <div class="bento-card" data-bento>
+        <div class="bento-num" data-count="7" data-suffix="×">0</div>
+        <div class="bento-label">Organizational Scale</div>
+        <div class="bento-desc">Built the operating structure, functions, and management systems needed to grow from 50 to 370+ employees — including HR, QA, IT, Facilities, Office Management, and a sales structure of ~14 teams. Revenue grew ~7× and profit 10×+ over the same period.</div>
+        <div class="bento-pills">
+          <span class="bento-pill">50 → 370+ employees</span>
+          <span class="bento-pill">~7× revenue growth</span>
+          <span class="bento-pill">8+ functions built</span>
         </div>
       </div>
 
@@ -1302,8 +1347,8 @@
         </div>
       </div>
 
-      <!-- Card G — Culture & Continuity -->
-      <div class="bento-card span2" data-bento>
+      <!-- Card G: Culture & Continuity -->
+      <div class="bento-card" data-bento>
         <div class="bento-num" data-static="~95%">~95%</div>
         <div class="bento-label">Manager Retention</div>
         <div class="bento-desc">Internally developed managers — virtually all management roles filled from within. Built routines, career paths, and a culture of accountability that survived rapid growth, COVID, wartime disruption, the loss of the company's owner, and eventually a structured transition when I relocated to the U.S. The organization ran stably for ~3 months without regular executive presence.</div>
@@ -2044,6 +2089,25 @@ const bentoObs = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('[data-bento]').forEach(card => bentoObs.observe(card));
+
+/* ── Bento accordion hover ────────────────────────────────────── */
+(function() {
+  const grid = document.querySelector('.bento-grid');
+  if (!grid) return;
+  if (!window.matchMedia('(hover: hover) and (min-width: 900px)').matches) return;
+  const cards = Array.from(grid.querySelectorAll('[data-bento]'));
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', () => {
+      cards.forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      grid.classList.add('has-active');
+    });
+  });
+  grid.addEventListener('mouseleave', () => {
+    cards.forEach(c => c.classList.remove('active'));
+    grid.classList.remove('has-active');
+  });
+})();
 
 /* ── Lightbox ─────────────────────────────────────────────────── */
 const lbImages = [
