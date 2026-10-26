@@ -393,27 +393,16 @@
 
     /* ── SKILLS ──────────────────────────────────────────────────────── */
     #skills { padding: 100px 0; background: var(--bg-2); }
+    #competencies { padding: 80px 0; background: var(--bg-2); }
 
     /* ── Core Competencies grid ─────────────────────────────────── */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 14px;
+      gap: 36px 48px;
       margin-top: 24px;
     }
-    .skills-cat {
-      border: 1px solid var(--border);
-      border-top: 2.5px solid var(--gold);
-      border-radius: 12px;
-      padding: 22px 20px 20px;
-      background: var(--bg);
-      transition: box-shadow .25s ease, border-color .25s ease;
-    }
-    .skills-cat:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      border-color: var(--border-g);
-      border-top-color: var(--gold);
-    }
+    .skills-cat { /* no card chrome — clean column groups */ }
     .skills-cat-name {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 10.5px;
@@ -421,23 +410,24 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--gold);
+      padding-bottom: 10px;
       margin-bottom: 14px;
+      border-bottom: 1px solid var(--border);
     }
     .skills-pills { display: flex; flex-wrap: wrap; gap: 6px; }
     .skills-pill {
       font-size: 12.5px;
       color: var(--text-2);
-      background: var(--bg-3);
+      background: transparent;
       border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 4px 10px;
+      border-radius: 4px;
+      padding: 3px 9px;
       line-height: 1.5;
-      transition: border-color .15s, color .15s, background .15s;
+      transition: border-color .15s, color .15s;
     }
     .skills-pill:hover {
       border-color: var(--border-g);
       color: var(--text);
-      background: var(--gold-bg);
     }
 
     /* ── EXPERIENCE ──────────────────────────────────────────────────── */
@@ -1069,7 +1059,8 @@
       .bento-card.span2 .bento-body { grid-template-columns: 1fr; gap: 12px; }
       .bento-num { font-size: 64px; }
       section, #skills, #experience, #credentials, #selected-impact,
-      #about, #volunteer, #references, #languages, #cert-gallery { padding: 60px 0; }
+      #about, #volunteer, #references, #languages, #cert-gallery,
+      #competencies { padding: 60px 0; }
       .case-grid { margin-top: 32px; }
       .what-pillars { margin-top: 32px; margin-bottom: 40px; }
       .about-wrap { margin-top: 32px; }
@@ -1363,93 +1354,6 @@
       </div>
     </div>
 
-    <p class="label reveal" style="margin-top:60px;margin-bottom:28px">Core Competencies</p>
-    <div class="skills-grid reveal" data-delay="2">
-
-      <div class="skills-cat">
-        <div class="skills-cat-name">Core Leadership</div>
-        <div class="skills-pills">
-          <span class="skills-pill">Executive Leadership</span>
-          <span class="skills-pill">Strategic Planning</span>
-          <span class="skills-pill">General Management</span>
-          <span class="skills-pill">Project Management</span>
-          <span class="skills-pill">Risk Management</span>
-          <span class="skills-pill">Business Process Reengineering</span>
-          <span class="skills-pill">Cross-functional Coordination</span>
-          <span class="skills-pill">Personnel Development &amp; Coaching</span>
-          <span class="skills-pill">Conflict Resolution</span>
-        </div>
-      </div>
-
-      <div class="skills-cat">
-        <div class="skills-cat-name">HR &amp; People</div>
-        <div class="skills-pills">
-          <span class="skills-pill">HR Systems Design</span>
-          <span class="skills-pill">Recruitment &amp; Onboarding</span>
-          <span class="skills-pill">Compensation &amp; Benefits</span>
-          <span class="skills-pill">Performance Management</span>
-          <span class="skills-pill">Employee Training &amp; Development</span>
-          <span class="skills-pill">Coaching &amp; Emotional Leadership</span>
-          <span class="skills-pill">Team Building &amp; Motivation</span>
-          <span class="skills-pill">Culture Building</span>
-          <span class="skills-pill">Organizational Design</span>
-        </div>
-      </div>
-
-      <div class="skills-cat">
-        <div class="skills-cat-name">Finance</div>
-        <div class="skills-pills">
-          <span class="skills-pill">P&amp;L Management</span>
-          <span class="skills-pill">Budget Forecasting</span>
-          <span class="skills-pill">Payroll Accounting</span>
-          <span class="skills-pill">Financial Analysis</span>
-          <span class="skills-pill">Cost Optimization</span>
-          <span class="skills-pill">Compensation Strategy</span>
-          <span class="skills-pill">Revenue Growth</span>
-        </div>
-      </div>
-
-      <div class="skills-cat">
-        <div class="skills-cat-name">Sales &amp; Biz Dev</div>
-        <div class="skills-pills">
-          <span class="skills-pill">B2B / B2C / B2G Sales</span>
-          <span class="skills-pill">Tender Preparation &amp; Negotiation</span>
-          <span class="skills-pill">Client Relationship Management</span>
-          <span class="skills-pill">Marketing Strategy &amp; Branding</span>
-          <span class="skills-pill">Event Organization &amp; Management</span>
-          <span class="skills-pill">Online &amp; Offline Campaigns</span>
-          <span class="skills-pill">Client Attraction</span>
-        </div>
-      </div>
-
-      <div class="skills-cat">
-        <div class="skills-cat-name">Technology</div>
-        <div class="skills-pills">
-          <span class="skills-pill">CRM Implementation &amp; Optimization</span>
-          <span class="skills-pill">AI Tools &amp; Automation</span>
-          <span class="skills-pill">Content Generation with AI</span>
-          <span class="skills-pill">Google Analytics</span>
-          <span class="skills-pill">Microsoft Office 365</span>
-          <span class="skills-pill">Google Workspace</span>
-          <span class="skills-pill">IT Infrastructure</span>
-          <span class="skills-pill">Data Security &amp; DDoS Protection</span>
-        </div>
-      </div>
-
-      <div class="skills-cat">
-        <div class="skills-cat-name">Communication</div>
-        <div class="skills-pills">
-          <span class="skills-pill">Public Speaking &amp; Facilitation</span>
-          <span class="skills-pill">Copywriting &amp; Article Writing</span>
-          <span class="skills-pill">English — Fluent</span>
-          <span class="skills-pill">Ukrainian — Native</span>
-          <span class="skills-pill">Russian — Native</span>
-          <span class="skills-pill">Polish — Basic</span>
-          <span class="skills-pill">Cross-cultural Communication</span>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -1878,6 +1782,99 @@
         <div class="lang-track"><div class="lang-fill" data-w="25"></div></div>
         <div class="lang-lv">Basic</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CORE COMPETENCIES ──────────────────────────────────────────────── -->
+<section id="competencies">
+  <div class="w">
+    <p class="label reveal">Core Competencies</p>
+    <div class="skills-grid reveal" data-delay="1">
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Core Leadership</div>
+        <div class="skills-pills">
+          <span class="skills-pill">Executive Leadership</span>
+          <span class="skills-pill">Strategic Planning</span>
+          <span class="skills-pill">General Management</span>
+          <span class="skills-pill">Project Management</span>
+          <span class="skills-pill">Risk Management</span>
+          <span class="skills-pill">Business Process Reengineering</span>
+          <span class="skills-pill">Cross-functional Coordination</span>
+          <span class="skills-pill">Personnel Development &amp; Coaching</span>
+          <span class="skills-pill">Conflict Resolution</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">HR &amp; People</div>
+        <div class="skills-pills">
+          <span class="skills-pill">HR Systems Design</span>
+          <span class="skills-pill">Recruitment &amp; Onboarding</span>
+          <span class="skills-pill">Compensation &amp; Benefits</span>
+          <span class="skills-pill">Performance Management</span>
+          <span class="skills-pill">Employee Training &amp; Development</span>
+          <span class="skills-pill">Coaching &amp; Emotional Leadership</span>
+          <span class="skills-pill">Team Building &amp; Motivation</span>
+          <span class="skills-pill">Culture Building</span>
+          <span class="skills-pill">Organizational Design</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Finance</div>
+        <div class="skills-pills">
+          <span class="skills-pill">P&amp;L Management</span>
+          <span class="skills-pill">Budget Forecasting</span>
+          <span class="skills-pill">Payroll Accounting</span>
+          <span class="skills-pill">Financial Analysis</span>
+          <span class="skills-pill">Cost Optimization</span>
+          <span class="skills-pill">Compensation Strategy</span>
+          <span class="skills-pill">Revenue Growth</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Sales &amp; Biz Dev</div>
+        <div class="skills-pills">
+          <span class="skills-pill">B2B / B2C / B2G Sales</span>
+          <span class="skills-pill">Tender Preparation &amp; Negotiation</span>
+          <span class="skills-pill">Client Relationship Management</span>
+          <span class="skills-pill">Marketing Strategy &amp; Branding</span>
+          <span class="skills-pill">Event Organization &amp; Management</span>
+          <span class="skills-pill">Online &amp; Offline Campaigns</span>
+          <span class="skills-pill">Client Attraction</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Technology</div>
+        <div class="skills-pills">
+          <span class="skills-pill">CRM Implementation &amp; Optimization</span>
+          <span class="skills-pill">AI Tools &amp; Automation</span>
+          <span class="skills-pill">Content Generation with AI</span>
+          <span class="skills-pill">Google Analytics</span>
+          <span class="skills-pill">Microsoft Office 365</span>
+          <span class="skills-pill">Google Workspace</span>
+          <span class="skills-pill">IT Infrastructure</span>
+          <span class="skills-pill">Data Security &amp; DDoS Protection</span>
+        </div>
+      </div>
+
+      <div class="skills-cat">
+        <div class="skills-cat-name">Communication</div>
+        <div class="skills-pills">
+          <span class="skills-pill">Public Speaking &amp; Facilitation</span>
+          <span class="skills-pill">Copywriting &amp; Article Writing</span>
+          <span class="skills-pill">English — Fluent</span>
+          <span class="skills-pill">Ukrainian — Native</span>
+          <span class="skills-pill">Russian — Native</span>
+          <span class="skills-pill">Polish — Basic</span>
+          <span class="skills-pill">Cross-cultural Communication</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
